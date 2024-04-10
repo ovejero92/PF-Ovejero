@@ -1,0 +1,57 @@
+@import '../../../../../assets/scss/mixins';
+.toolbar {
+    color: $toolbar-text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $toolbar-height;
+    padding: 0 20px;
+    .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 0 130px;
+        display: flex;
+        li {
+            margin-left: 70px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+                padding: 10px;
+                border-radius: 20px;
+                transition: opacity 0.3s;
+
+                &:hover {
+                    opacity: 0.7;
+                    background-color: darken($sidebar-bg-color, 10%);
+                }
+            }
+        }
+    }
+}
+
+.content {
+    padding: 20px;
+}
+.pel{
+    cursor: pointer;
+    position: relative;
+}
+.mensaje {
+    display: none;
+    position: absolute;
+    top: -45px;
+    left: 70px;
+    width: 500px;
+    background-color: #f8d7da;
+    border-radius: 5px;
+    color: #721c24;
+    padding: 10px;
+  }
+.pel button:hover + .mensaje {
+    display: block;
+  }

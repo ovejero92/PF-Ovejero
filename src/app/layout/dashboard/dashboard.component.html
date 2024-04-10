@@ -1,0 +1,59 @@
+<!-- COLORES DE ANGULAR MATERIAL
+
+- primary: primaria
+- accent: secundaria
+- warn: errores
+
+-->
+
+<mat-drawer-container class="example-container" autosize>
+    <!-- SIDEBAR -->
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div class="sidebar">
+        <div class="logo"><img src="../../../assets/Logo.png" width="40" alt="logo"></div>
+        <ul class="menu">
+            <li> <a href="#"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#"><i class="fa-solid fa-people-roof"></i>Aulas</a></li>
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user"></i>Profesores</a></li>
+            <li><a href="#"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
+            <li><a href="#"><i class="fa-regular fa-comment"></i>Mensajes</a></li>
+        </ul>
+    </div>
+    
+    </mat-drawer>
+    <!-- SIDEBAR -->
+  
+    <!-- CONTENIDO A LA DERECHA DEL SIDEBAR -->
+    <div class="example-sidenav-content">
+      <!-- TOOLBAR SUPERIOR -->
+      <mat-toolbar color="primary">
+        <button
+        style="position: relative;z-index: 2;"
+          (click)="drawer.toggle()"
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with menu icon"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div style="position: relative;">
+        <img src="../../../assets/Logo.png" class="logo" width="40" alt="">
+        <h1 class="spanLogo"><span style="color: rgb(255, 230, 0);">M</span>atrícula2</h1>
+        </div>
+        <app-toolbar />
+   
+      </mat-toolbar>
+
+      <main style="padding: 1rem;">
+      <app-users />
+      </main>
+      
+      <!-- TOOLBAR SUPERIOR -->
+  
+      <!-- <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button> -->
+    </div>
+    <app-footer />
+    <!-- CONTENIDO A LA DERECHA DEL SIDEBAR -->
+  </mat-drawer-container>

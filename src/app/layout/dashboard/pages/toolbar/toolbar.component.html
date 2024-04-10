@@ -1,0 +1,105 @@
+<app-my-modal (close)="modalVisible = false" [visible]="modalVisible" >
+    <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input
+                  formControlName="email"
+                  type="email"
+                  class="form-control"
+                  [class.is-invalid]="emailControl?.touched && emailControl?.invalid"
+                />
+                <div
+                *ngIf="emailControl?.hasError('pattern')"
+                class="invalid-feedback"
+              >
+                El correo debe tener almenos un &commat; ejemplo&commat;ejemplo.com
+              </div>
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input 
+                type="password" 
+                class="form-control" 
+                formControlName="contra"
+                [class.is-invalid]="contrasenaControl?.touched && contrasenaControl?.invalid"
+                />
+                <div
+                *ngIf="contrasenaControl?.hasError('pattern')"
+                class="invalid-feedback"
+              >
+                La contraseña debe tener 8 caracteres una mayuscula y un numero.
+              </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Nombre</label>
+                <input
+                  [class.is-invalid]="nameControl?.touched && nameControl?.invalid"
+                  formControlName="name"
+                  type="text"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="nameControl?.hasError('required')"
+                  class="invalid-feedback"
+                >
+                  No ingresaste nada
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="inputAddress2" class="form-label">Apellido</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="lastName"
+                  [class.is-invalid]="lastNameControl?.touched && lastNameControl?.invalid"
+                />
+                <div
+                *ngIf="lastNameControl?.hasError('required')"
+                class="invalid-feedback"
+              >
+                No ingresaste nada
+              </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck" />
+                  <label class="form-check-label" for="gridCheck">
+                    Check me out
+                  </label>
+          
+                </div>
+              </div>
+              <div class="col-12">
+                @if (userForm.status === 'VALID') {
+                    <button type="submit" class="btn btn-success ">Sign in</button>
+                } @else {
+                    <div class="pel">
+                        <button type="submit" class="btn btn-danger">Sign in</button> 
+                        <span class="mensaje">¡El boton se va a poner verde cuando cumpletes los campos correctamente !</span>
+                    </div>
+                   
+                }
+                
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <pre>{{userForm.status | json }}</pre>
+            <pre>{{ userForm.value | json }}</pre>
+          </div>
+        </div>
+      </div>
+      
+</app-my-modal>
+<div class="toolbar">
+    <ul class="menu">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Acerca de</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#" (click)="modalVisible = true">Login/register</a></li>
+    </ul>
+</div>
+
