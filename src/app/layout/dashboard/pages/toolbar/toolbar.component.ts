@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../../../core/services/auth.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-toolbar',
@@ -9,11 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class ToolbarComponent {
   modalVisible = false
-
+  mostra = true
+  logueo = document.querySelector('.logueo')
 
   userForm = this.formBuilder.group({
     // name: this.formBuilder.control(''),
-    name: ['',[Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')] ],
+    firstName: ['',[Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')] ],
     lastName:['' ,[Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
     email: this.formBuilder.control('', [
       // Validators.email,
@@ -27,7 +31,7 @@ export class ToolbarComponent {
     return this.userForm.get('email');
   }
   get nameControl(){
-    return this.userForm.get('name')
+    return this.userForm.get('firstName')
   }
   get lastNameControl(){
     return this.userForm.get('lastName')
@@ -35,19 +39,28 @@ export class ToolbarComponent {
   get contrasenaControl() {
     return this.userForm.get('contra');
   }
-
-  constructor(private formBuilder: FormBuilder) {}
+  
+  authUser$: Observable<any | null>;
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+   this.authUser$ = this.authService.authUser$
+  }
+  login(): void {
+    this.authService.login()
+  }
   onSubmit(): void {
     if(this.userForm.status === 'VALID'){
+    
     this.modalVisible = false
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Your work has been saved",
+      title: "Usuario creado correctamente",
       showConfirmButton: false,
       timer: 1500
     });
+    let datosUsuarioCreado = this.userForm.value
+    localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
+    this.mostra = !this.mostra
     }
-   
   }
 }

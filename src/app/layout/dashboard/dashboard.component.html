@@ -41,11 +41,44 @@
         <h1 class="spanLogo"><span style="color: rgb(255, 230, 0);">M</span>atrícula2</h1>
         </div>
         <app-toolbar />
+
+           
+           
+        @if(authUser$ | async; as user ) {
+          <!-- forma fea -->
+          <!-- <div>{{(authUser$ | async)?.firstName}}</div> -->
+        
+        <div class="datos_usuario"(click)="mostarDatos()" >
+            <div><i class="fa-solid fa-user-gear us"></i></div>
+            @if(mostra){
+              <div class="datos-ocultos">
+            <div class="cono"></div>
+            <div class="datos-usuario" >
+              <hr><h3>Tus datos</h3><hr>
+              <p><strong>Nombre:</strong> <span>{{user.firstName}}</span></p>
+              <p><strong>Apellido:</strong> <span>{{user.lastName}}</span></p>
+              <p><strong>Email:</strong> <span>{{user.email}}</span></p>
+              <p><strong>Rol:</strong> <span ></span>{{user.role}}</p>
+              <div style="text-align: center;margin-top: 20px;"><button (click)="logout()" mat-flat-button color="warn">Cerrar sesion <i class="fa-solid fa-right-to-bracket "></i></button></div>
+          </div>
+
+
+        </div>
+            }</div>
    
+
+        }
+        
+      
       </mat-toolbar>
 
       <main style="padding: 1rem;">
-      <app-users />
+        
+        
+       <app-clase-10-rxjs-2 /> 
+      <!-- <app-clases-09-rxjs /> -->
+      <!-- <app-products /> -->
+      <!-- <app-users />  -->
       </main>
       
       <!-- TOOLBAR SUPERIOR -->

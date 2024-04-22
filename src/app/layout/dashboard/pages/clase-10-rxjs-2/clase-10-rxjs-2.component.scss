@@ -1,0 +1,48 @@
+.contenedorUsuarios {
+    background-color: rgba(0, 0, 0, 0);
+    width: 1100px;
+    height: 400px;
+    border-radius: 20px;
+    padding-top: 20px;
+    .UsuarioInd{
+        width: 90%;
+        height: 60px;
+        padding-top: 20px;
+        margin: 30px auto;
+        border-radius: 10px;
+        background-color: #007bff;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 2px 1px 1px 2px black;
+        p{
+            font-weight: 700;
+            text-shadow: 1px 1px 2px white;
+        }
+        span{
+            margin-left: 10px;
+            color: rgb(54, 24, 104);
+        }
+    }
+}
+.linea-vertical {
+    height: 100%; /* Altura deseada de la línea vertical */
+    margin: 0;
+    position: relative;
+    bottom: 10px; /* Centrar la línea vertical */
+    border: none;
+    border-left: 2px solid black; /* Puedes cambiar el grosor y el color aquí */
+}
+.UA{
+    background-color: green;
+    color: azure;
+    border-radius: 50%;
+    padding: 4px 7px;
+}
+.UI {
+    background-color: red;
+    color: azure;
+    border-radius: 50%;
+    padding: 4px 10px;
+
+}

@@ -12,6 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { UsersModule } from './pages/users/users.module';
 import { FooterModule } from './pages/footer/footer.module';
 import { ToolbarModule } from './pages/toolbar/toolbar.module';
+import { ProductsModule } from './pages/products/products.module';
+import { Clases09RxjsModule } from './pages/clases-09-rxjs/clases-09-rxjs.module';
+import { Clase10Rxjs2Module } from './pages/clase-10-rxjs-2/clase-10-rxjs-2.module';
+import { MyModalModule } from '../../components/my-modal/my-modal.module';
 
 
 @NgModule({
@@ -25,7 +29,10 @@ import { ToolbarModule } from './pages/toolbar/toolbar.module';
     MatButtonModule,
     UsersModule,
     FooterModule,
-    ToolbarModule
+    ToolbarModule,
+    ProductsModule,
+    Clases09RxjsModule,
+    Clase10Rxjs2Module,
   ],
   exports: [DashboardComponent],
 })

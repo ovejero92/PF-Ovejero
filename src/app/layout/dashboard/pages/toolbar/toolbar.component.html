@@ -37,7 +37,7 @@
                 <label class="form-label">Nombre</label>
                 <input
                   [class.is-invalid]="nameControl?.touched && nameControl?.invalid"
-                  formControlName="name"
+                  formControlName="firstName"
                   type="text"
                   class="form-control"
                 />
@@ -74,7 +74,7 @@
               </div>
               <div class="col-12">
                 @if (userForm.status === 'VALID') {
-                    <button type="submit" class="btn btn-success ">Sign in</button>
+                    <button type="submit" class="btn btn-success " (click)="login()">Sign in</button>
                 } @else {
                     <div class="pel">
                         <button type="submit" class="btn btn-danger">Sign in</button> 
@@ -99,7 +99,9 @@
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Acerca de</a></li>
         <li><a href="#">Servicios</a></li>
-        <li><a href="#" (click)="modalVisible = true">Login/register</a></li>
+        @if(mostra){
+                <li class="logueo"><a href="#" (click)="modalVisible = true">Login/register</a></li>
+        }
     </ul>
 </div>
 

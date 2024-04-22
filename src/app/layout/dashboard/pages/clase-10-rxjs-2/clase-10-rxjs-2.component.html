@@ -1,0 +1,36 @@
+@if (cargando) {
+    <div>Cargando... por favor espere...</div>
+    } @else {
+    <h2>Usuarios registrados</h2>
+    <div class="contenedorUsuarios">
+    @for (user of usuarios; track $index) {
+    <div class="UsuarioInd">
+      <p>ID: <span>{{user.id}}</span></p><hr class="linea-vertical">
+      <p>Nombre: <span>{{user.firstName}}</span></p> <hr class="linea-vertical">
+      <p>Apellido: <span>{{user.lastName}}</span></p><hr class="linea-vertical">
+      <p>Correo: <span>{{user.email}}</span></p><hr class="linea-vertical">
+      <p>Rol: <span>{{user.role}}</span></p><hr class="linea-vertical">
+      <p>Activo/Inactivo: <span class="UI">I</span> </p>
+     </div>} 
+     <h2>Usuarios guardados en Local Storage</h2>
+     @if(DatosLocales){
+      
+        <div class="UsuarioInd">
+            <p>ID: <span>1</span></p><hr class="linea-vertical">
+            <p>Nombre: <span>{{cambio.firstName}}</span></p> <hr class="linea-vertical">
+            <p>Apellido: <span>{{cambio.lastName}}</span></p><hr class="linea-vertical">
+            <p>Correo: <span>{{cambio.email}}</span></p><hr class="linea-vertical">
+            <p>Rol: <span>Usuario</span></p><hr class="linea-vertical">
+            <p>Activo/Inactivo: <span class="UA">A</span></p>
+           </div>
+     }
+    </div>
+    <!-- <pre>{{ usuarios | json }}</pre>
+    <pre>{{ roles | json }}</pre> -->
+    }
+    
+    <!-- <p>clase-10-rxjs-2 works!</p>
+    
+    <button (click)="login()">Iniciar sesion</button>
+    
+    <pre>{{ usuarioAutenticado$ | async | json }}</pre> -->
