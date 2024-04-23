@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class ToolbarComponent {
   modalVisible = false
   mostra = true
-  logueo = document.querySelector('.logueo')
+  datosLocales = localStorage.getItem('Usuario')
 
   userForm = this.formBuilder.group({
     // name: this.formBuilder.control(''),
@@ -45,7 +45,10 @@ export class ToolbarComponent {
    this.authUser$ = this.authService.authUser$
   }
   login(): void {
-    this.authService.login()
+    if(!this.datosLocales) {
+      this.onSubmit()
+    } else {
+    this.authService.login()}
   }
   onSubmit(): void {
     if(this.userForm.status === 'VALID'){
