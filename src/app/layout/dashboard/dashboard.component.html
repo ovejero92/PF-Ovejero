@@ -8,14 +8,19 @@
 
 <mat-drawer-container class="example-container" autosize>
     <!-- SIDEBAR -->
-    <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-drawer
+    [opened]="!isMobile()" 
+    #drawer 
+    class="example-sidenav" 
+    [mode]="isMobile()?'over':'side'" >
       <div class="sidebar">
         <div class="logo"><img src="../../../assets/Logo.png" width="40" alt="logo"></div>
         <ul class="menu">
-            <li> <a href="#"><i class="fa-solid fa-house"></i> Inicio</a></li>
-            <li><a href="#"><i class="fa-solid fa-people-roof"></i>Aulas</a></li>
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user"></i>Profesores</a></li>
-            <li><a href="#"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
+            <li> <a routerLink="home"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a routerLink="teacher"><i class="fa-solid fa-chalkboard-user"></i>Profesores</a></li>
+            <li><a routerLink="users"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
+            <li><a routerLink="sales"><i class="fa-solid fa-people-roof"></i>Aulas</a></li>
+            <li><a routerLink="products"><i class="fa-solid fa-dumpster-fire"></i>Tecnologias</a></li>
             <li><a href="#"><i class="fa-regular fa-comment"></i>Mensajes</a></li>
         </ul>
     </div>
@@ -74,8 +79,8 @@
 
       <main style="padding: 1rem;">
         
-        
-       <app-clase-10-rxjs-2 /> 
+        <router-outlet />
+       <!-- <app-clase-10-rxjs-2 />  -->
       <!-- <app-clases-09-rxjs /> -->
       <!-- <app-products /> -->
       <!-- <app-users />  -->

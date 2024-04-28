@@ -6,10 +6,12 @@ import { UsersComponent } from './users.component';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 
 import { SharedModule } from '../../../../shared/shared.module';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 @NgModule({
-  declarations: [UsersComponent, UserDialogComponent],
-  imports: [CommonModule, UsersRoutingModule, SharedModule,],
+  declarations: [UsersComponent, UserDialogComponent, UserDetailComponent],
+  imports: [CommonModule, UsersRoutingModule, SharedModule,MatProgressSpinnerModule],
   exports: [UsersComponent],
 })
 export class UsersModule {}

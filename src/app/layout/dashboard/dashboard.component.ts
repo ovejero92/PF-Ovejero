@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Observable } from 'rxjs';
 import { IUser } from './pages/users/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +12,12 @@ import { IUser } from './pages/users/models';
 export class DashboardComponent {
   showFiller = false;
   mostra = false;
+
+  mostrarComponent = true;
+
   authUser$: Observable<IUser | null>;
   yaRegistrado = localStorage.getItem('Usuario')
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router:Router) {
     this.authUser$ = this.authService.authUser$;
   } 
   login():void {
@@ -21,6 +25,10 @@ export class DashboardComponent {
   }
   logout(): void {
     this.authService.logout()
+    this.router.navigate(['auth'])
+  }
+  isMobile(): boolean {
+    return window.innerWidth <= 280;
   }
   mostarDatos(): void {
     this.mostra = !this.mostra

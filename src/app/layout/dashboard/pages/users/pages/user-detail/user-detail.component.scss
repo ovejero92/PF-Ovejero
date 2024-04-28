@@ -1,0 +1,79 @@
+.credencial{
+    width: 260px;
+    height: 430px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 16px;
+    .tira{
+        width: 38px;
+        height: 59px;
+        background: rgb(0,212,255);
+        background: linear-gradient(0deg, rgba(0,212,255,1) 0%, rgba(0,140,168,1) 84%);
+        margin: 0 auto;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        position: relative;
+        z-index: 2;
+    }
+    .gancho1{
+        width: 60px;
+        height: 40px;
+        margin: 0 auto;
+        border: solid 8px grey;
+        border-top-left-radius: 19px;
+        border-top-right-radius: 19px;
+        border-bottom-left-radius:60px;
+        border-bottom-right-radius: 60px;
+        position: relative;
+        bottom: 14px;
+    }
+    .gancho2{
+        width: 10px;
+        height: 40px;
+        margin: 0 auto;
+        background: rgb(106,106,106);
+        background: linear-gradient(0deg, rgba(106,106,106,1) 0%, rgba(205,205,205,1) 100%);
+        border-radius: 3px;
+        position: relative;
+        bottom: 25px;
+        z-index: 5;
+    }
+    .semiCirculo{
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        // background-color: rgba(221, 220, 220, 0.842);
+        border: solid 19px rgb(221, 220, 220);
+        border-radius: 50%;
+        position: relative;
+        bottom: 50px;
+        z-index: 4;
+    }
+    .contenido{
+    width: 220px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: rgba(221, 220, 220, 0.904);
+    position: relative;
+    bottom: 80px;
+    border-radius: 10px;
+    // .fondo{
+    //     position: relative;
+    //     background-image: url('https://i.pinimg.com/736x/55/00/d2/5500d20ba5c97ca0b55f3da904c7d4a7.jpg');
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+        
+    // }
+    h4{
+        padding-top: 30px;
+        text-align: center;
+    }
+    p{
+        margin-left: 9px;
+        font-weight: 800;
+        span{
+            font-weight: 400;
+        }
+    }
+}
+}

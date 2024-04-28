@@ -32,6 +32,7 @@
     bottom: 10px; /* Centrar la línea vertical */
     border: none;
     border-left: 2px solid black; /* Puedes cambiar el grosor y el color aquí */
+    z-index: 0;
 }
 .UA{
     background-color: green;

@@ -21,6 +21,6 @@ export class ProductsComponent implements OnInit{
     console.log('numeros random', this.randomNumber)
   }
   ngOnInit(): void {
-  //this.products = this.productsService.getProducts();
+  this.products = this.productsService.getProducts();
   }
 }

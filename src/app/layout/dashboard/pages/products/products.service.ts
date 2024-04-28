@@ -10,8 +10,18 @@ export class ProductsService {
     return [
       {
         id: 1,
-        name: 'Pc Gamer',
-        price: 3000
+        name: 'Python',
+        price: 130000
+      },
+      {
+        id:2,
+        name: 'Java Script',
+        price:130000
+      },
+      {
+        id:3,
+        name: 'React js',
+        price:90000
       },
     ];
   }

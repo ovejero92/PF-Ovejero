@@ -1,0 +1,53 @@
+@if (isLoading) {
+    <mat-spinner></mat-spinner>
+    } @else {
+    <div class="nav-salon">
+      <h4>Creacion de Salones virtuales</h4>
+      <button (click)="modalVisible = true">crear</button>
+    </div>
+    <app-my-modal (close)="modalVisible = false" [visible]="modalVisible">
+      <form [formGroup]="saleForm" action="">
+      <mat-form-field>
+        <mat-label>Tecnologia</mat-label>
+        <mat-select formControlName="product">
+          <mat-option [value]="product" *ngFor="let product of products"
+            >{{ product.name }} </mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Cantidad de vacantes</mat-label>
+        <input formControlName="quantity" matInput type="number" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Profesor</mat-label>
+        <mat-select formControlName="buyer">
+          <mat-option [value]="user" *ngFor="let user of users"
+            >{{ user.firstName }} {{ user.lastName }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <button (click)="createSale()" mat-button >Crear</button>
+    </form>
+    </app-my-modal>
+    <div style="display: flex; flex-wrap: wrap;">
+    @for (salon of sales; track $index) {
+      <div class="card-salon">
+        <div class="id-salon">{{salon.buyer.id}}</div>
+        <div class="banner"><span>{{salon.product.name}}</span></div>
+        <div class="body-salon">
+        <p>Profesor: <span>{{salon.buyer.firstName}}</span></p>
+        <p>Inicio: <span>25/6/2024</span></p>
+        <p>capacidad: <span>{{salon.quantity}}</span></p>
+        <div class="del"><i class="fa-solid fa-trash-can"></i></div>
+        </div>
+      </div>
+    }
+  </div>
+    <!--
+       
+    <pre>{{ saleForm.value | json }}</pre>
+
+    <pre>{{ sales | json }}</pre> -->
+
+    }

@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import Swal from 'sweetalert2';
+import { UserService } from './users.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit{
   displayedColumns: string[] = [
     'id',
     'firstName',
@@ -20,26 +21,30 @@ export class UsersComponent {
     'actions',
   ];
 
-  users: IUser[] = [
-    {
-      id: 1,
-      firstName: 'Naruto',
-      lastName: 'Uzumaki',
-      email: 'naru@test.com',
-      role: 'ADMIN',
-      createdAt: new Date(),
-    },
-    {
-      id: 2,
-      firstName: 'Sasuke',
-      lastName: 'Uchiha',
-      email: 'sasuke@test.com',
-      role: 'USER',
-      createdAt: new Date(),
-    },
-  ];
+  loading = false;
+  users: IUser[] = [];
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog, private userService: UserService) {}
+  ngOnInit(): void {
+    this.loading = true;
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "¡Error al cargar los datos del a base de datos!",
+          footer: '<a routingLink="auth">Volver a ingresar</a>'
+        });
+      },
+      complete:() => {
+        console.log('BD CONECTADO!');
+        this.loading = false
+      },
+    });
+  }
 
   openDialog(editingUser?: IUser): void {
     this.matDialog
