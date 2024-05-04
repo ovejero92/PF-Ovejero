@@ -11,7 +11,7 @@ let SALES_DB: ISale[] = [
       createdAt: new Date(),
       email: 'some@mail.com',
       firstName: 'TEST',
-      lastName: 'TEST',
+      phone: 11000000,
       role: 'USER',
     },
     product: {

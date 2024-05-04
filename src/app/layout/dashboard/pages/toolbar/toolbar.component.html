@@ -1,8 +1,8 @@
-<app-my-modal (close)="modalVisible = false" [visible]="modalVisible" >
+ <!-- <app-my-modal (close)="modalVisible = false" [visible]="modalVisible" >
     <div class="container">
         <div class="row">
           <div class="col-6">
-            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
+           <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
               <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Email</label>
                 <input
@@ -84,24 +84,24 @@
                 }
                 
               </div>
-            </form>
+            </form> 
           </div>
           <div class="col-6">
             <pre>{{userForm.status | json }}</pre>
-            <pre>{{ userForm.value | json }}</pre>
+            <pre>{{ userForm.value | json }}</pre> 
           </div>
         </div>
       </div>
       
-</app-my-modal>
+</app-my-modal>-->
 <div class="toolbar">
     <ul class="menu">
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Acerca de</a></li>
         <li><a href="#">Servicios</a></li>
-        @if(mostra){
+        <!-- @if(mostra){
                 <li class="logueo"><a href="#" (click)="modalVisible = true">Login/register</a></li>
-        }
+        } -->
     </ul>
 </div>
 

@@ -18,7 +18,7 @@
         <ul class="menu">
             <li> <a routerLink="home"><i class="fa-solid fa-house"></i> Inicio</a></li>
             <li><a routerLink="teacher"><i class="fa-solid fa-chalkboard-user"></i>Profesores</a></li>
-            <li><a routerLink="users"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
+            <li><a *ngIf="(authUser$ | async)?.role === 'ADMIN'" routerLink="users"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
             <li><a routerLink="sales"><i class="fa-solid fa-people-roof"></i>Aulas</a></li>
             <li><a routerLink="products"><i class="fa-solid fa-dumpster-fire"></i>Tecnologias</a></li>
             <li><a href="#"><i class="fa-regular fa-comment"></i>Mensajes</a></li>
@@ -49,19 +49,19 @@
 
            
            
-        @if(authUser$ | async; as user ) {
-          <!-- forma fea -->
-          <!-- <div>{{(authUser$ | async)?.firstName}}</div> -->
+        <!-- forma fea -->
+        <!-- <div>{{(authUser$ | async)?.firstName}}</div> -->
         
         <div class="datos_usuario"(click)="mostarDatos()" >
-            <div><i class="fa-solid fa-user-gear us"></i></div>
-            @if(mostra){
+          <div><i class="fa-solid fa-user-gear us"></i></div>
+          @if(mostra){
+          @if(authUser$ | async; as user ) {
               <div class="datos-ocultos">
             <div class="cono"></div>
             <div class="datos-usuario" >
               <hr><h3>Tus datos</h3><hr>
               <p><strong>Nombre:</strong> <span>{{user.firstName}}</span></p>
-              <p><strong>Apellido:</strong> <span>{{user.lastName}}</span></p>
+              <p><strong>telefono:</strong> <span>{{user.phone}}</span></p>
               <p><strong>Email:</strong> <span>{{user.email}}</span></p>
               <p><strong>Rol:</strong> <span ></span>{{user.role}}</p>
               <div style="text-align: center;margin-top: 20px;"><button (click)="logout()" mat-flat-button color="warn">Cerrar sesion <i class="fa-solid fa-right-to-bracket "></i></button></div>
@@ -69,10 +69,11 @@
 
 
         </div>
-            }</div>
-   
-
-        }
+      }
+    }
+    </div>
+            
+            
         
       
       </mat-toolbar>

@@ -1,16 +1,3 @@
-<!-- <div class="contenedor">
-<div class="login">
-   
-        <h1>LOG IN</h1>
-        <label for="">Username</label>
-        <input type="text">
-        <label for="">Password</label>
-        <input type="password">
-        <button (click)="login()" mat-button type="button">Iniciar Sesion</button>    
- 
-</div>
-</div> -->
- <form action="" style="background-color: rgb(139, 139, 139);">
 <div class="section">
     <div class="container">
         <div class="row full-height justify-content-center">
@@ -19,60 +6,112 @@
                     <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
                       <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
                       <label for="reg-log"></label>
-                    <div class="card-3d-wrap mx-auto">
-                        <div class="card-3d-wrapper">
+                      <div class="card-3d-wrap mx-auto">
+                          <div class="card-3d-wrapper">
+                            <!-- Sing in -->
                             <div class="card-front">
                                 <div class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="pb-3">Log In</h4>
+                                         <form [formGroup]="loginForm" (ngSubmit)="login()">
                                         <div class="form-group">
-                                            <input type="email" class="form-style" placeholder="Email">
+                                            <input type="email" class="form-style" placeholder="Email" formControlName="email">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>	
                                         <div class="form-group mt-2">
-                                            <input type="password" class="form-style" placeholder="Password">
+                                            <input type="password" class="form-style" placeholder="Password" formControlName="contra">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a (click)="login()" class="btn mt-4">Login</a>
-                  <div class="form-group mt-2">
-                    <p>Or</p>
+                                        <button [type]="onSubmit" class="btn mt-4">Login</button>
+                                        <div class="form-group mt-2">
+                                            <p>Or</p>
                                         <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-facebook-f"></i></a>
                                         <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-google"></i></a>
-                  <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-github"></i></a>
-                                        </div>
-                  <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code" class="link">Forgot your password?</a></p>
-                                      </div>
-                                  </div>
-                              </div>
+                                        <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-github"></i></a>
+                                    </div>
+                                    <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code" class="link">Forgot your password?</a></p>
+                                </form>
+                                </div>
+                                </div>
+                            </div>
+                              <!-- Sing UP -->
                             <div class="card-back">
-                                <div class="center-wrap">
-                                    <div class="section text-center">
-                                        <h4 class="mb-3 pb-3">Sign Up</h4>
+                                  <div class="center-wrap">
+                                      <div class="section text-center">
+                                          <h4 class="mb-3 pb-3">Sign Up</h4>
+                                          <form [formGroup]="userRegister" (ngSubmit)="register()">
                                         <div class="form-group">
-                                            <input type="text" class="form-style" placeholder="Full Name">
-                                            <i class="input-icon uil uil-user"></i>
+                                            <input 
+                                            type="text" 
+                                            class="form-style" 
+                                            placeholder="Name"  
+                                            [class.is-invalid]="nameControl?.touched && nameControl?.invalid" 
+                                            formControlName="firstName">
+                                            <i class="input-icon uil uil-user"></i> 
+                                            <div
+                                            *ngIf="nameControl?.hasError('required')"
+                                            class="invalid-feedback"
+                                          >
+                                            No ingresaste nada
+                                          </div>
                                         </div>	
                                         <div class="form-group mt-2">
-                                            <input type="tel" class="form-style" placeholder="Phone Number">
+                                            <input 
+                                            type="number" 
+                                            class="form-style" 
+                                            placeholder="Phone Number" 
+                                            formControlName="phone" 
+                                            [class.is-invalid]="phoneControl?.touched && phoneControl?.invalid">
                                             <i class="input-icon uil uil-phone"></i>
+                                            <div
+                                            *ngIf="phoneControl?.hasError('required')"
+                                            class="invalid-feedback"
+                                            >
+                                            No ingresaste nada
+                                          </div>
                                         </div>	
-                  <div class="form-group mt-2">
-                                            <input type="email" class="form-style" placeholder="Email">
+                                        <div class="form-group mt-2">
+                                            <input 
+                                            type="email" 
+                                            class="form-style" 
+                                            placeholder="Email" 
+                                            formControlName="email" 
+                                            [class.is-invalid]="emailControl?.touched && emailControl?.invalid">
                                             <i class="input-icon uil uil-at"></i>
+                                            <div *ngIf="emailControl?.hasError('pattern')"
+                                            class="invalid-feedback">
+                                            El correo debe tener almenos un &commat; ejemplo&commat;ejemplo.com
+                                          </div>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" class="form-style" placeholder="Password">
+                                            <input 
+                                            type="password" 
+                                            class="form-style" 
+                                            placeholder="Password" 
+                                            formControlName="contra" 
+                                            [class.is-invalid]="contrasenaControl?.touched && contrasenaControl?.invalid" >
                                             <i class="input-icon uil uil-lock-alt"></i>
+                                            <div *ngIf="contrasenaControl?.hasError('pattern')" class="invalid-feedback">
+                                            La contraseña debe tener 8 caracteres una mayuscula y un numero.
                                         </div>
-                                        <a href="https://www.web-leb.com/code" class="btn mt-4">Register</a>
-                                      </div>
-                                  </div>
-                              </div>
+                                        </div>
+                                        @if (userRegister.status === 'VALID') {
+                                            <button type="submit" class="btn btn-success " (click)="register()" style="margin-top: 10px;">Register</button>
+                                        } @else {
+                                            <div class="pel" style="margin-top: 10px;">
+                                                <button type="submit" class="btn btn-danger">Register</button> 
+                                                <span class="mensaje">¡El boton se va a poner verde cuando cumpletes los campos correctamente !</span>
+                                            </div>
+                                        }</form>
+                                    </div>
+                                </div>
+                            </div>
                           </div>
                       </div>
-                  </div>
+                    </div>
               </div>
-          </div>
-    </div>
-</div> 
-  </form>
+            </div>
+        </div>
+    </div>  
+    <pre>{{userRegister.value| json}}</pre>
+    <pre>{{userRegister.status | json}}</pre>

@@ -17,7 +17,9 @@ export class SalesComponent implements OnInit {
   products: IProduct[] = [];
   users: IUser[] = [];
 
-  modalVisible = false
+  modalVisible = false;
+
+  existsUnsavedChanges = false;
 
   isLoading = false;
 
@@ -37,6 +39,15 @@ export class SalesComponent implements OnInit {
     this.loadSales();
     this.loadProducts();
     this.loadUsers();
+    this.subscribeToSaleFormChanges()
+  }
+  subscribeToSaleFormChanges(): void {
+    this.saleForm.valueChanges.subscribe({
+      next: (v) => {
+        console.log(v);
+        this.existsUnsavedChanges = true
+      }
+    })
   }
 
   createSale() {

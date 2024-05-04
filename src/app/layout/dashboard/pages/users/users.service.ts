@@ -6,7 +6,7 @@ const USER_DB: IUser[] = [
     {
         id: 1,
         firstName: 'Naruto',
-        lastName: 'Uzumaki',
+        phone: 11649324,
         email: 'naru@test.com',
         role: 'ADMIN',
         createdAt: new Date(),
@@ -14,7 +14,7 @@ const USER_DB: IUser[] = [
       {
         id: 2,
         firstName: 'Sasuke',
-        lastName: 'Uchiha',
+        phone: 115934583,
         email: 'sasuke@test.com',
         role: 'USER',
         createdAt: new Date(),

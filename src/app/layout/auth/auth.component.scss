@@ -258,3 +258,14 @@ display: none;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
+.mensaje {
+  display: none;
+  position: absolute;
+  top: -45px;
+  left: 70px;
+  width: 500px;
+  background-color: #f8d7da;
+  border-radius: 5px;
+  color: #721c24;
+  padding: 10px;
+}

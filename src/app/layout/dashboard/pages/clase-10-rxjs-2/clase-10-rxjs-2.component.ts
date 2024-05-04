@@ -51,7 +51,7 @@ export class Clase10Rxjs2Component implements OnInit, OnDestroy {
       {
         id: 1,
         firstName: 'Naruto',
-        lastName: 'Uzumaki',
+        phone: 11534124,
         email: 'naru@test.com',
         role: 'ADMIN',
         createdAt: new Date(),
@@ -59,7 +59,7 @@ export class Clase10Rxjs2Component implements OnInit, OnDestroy {
       {
         id: 2,
         firstName: 'Sasuke',
-        lastName: 'Uchiha',
+        phone: 11876345,
         email: 'sasuke@test.com',
         role: 'USER',
         createdAt: new Date(),
@@ -118,7 +118,7 @@ export class Clase10Rxjs2Component implements OnInit, OnDestroy {
           createdAt: new Date(),
           email: 'email@mail.com',
           firstName: 'goku',
-          lastName: 'son',
+          phone: 115123453,
           role: 'ADMIN',
         });
       },
