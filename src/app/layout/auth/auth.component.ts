@@ -63,7 +63,9 @@ export class AuthComponent {
       });
       let datosUsuarioCreado = this.userRegister.value
       localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
+      localStorage.setItem('accessToken','fdskfdsjkmngfunudsijfdsioufjsdoifdsyhfds');
       this.router.navigate(['dashboard', 'home'])
+
       }
     }
 
