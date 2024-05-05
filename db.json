@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Naruto",
+      "phone": 11649324,
+      "email": "naru@test.com",
+      "role": "ADMIN",
+      "createdAt": "2024-04-30T01:14:53.907Z"
+    },
+    {
+      "id": "2",
+      "firstName": "Sasuke",
+      "phone": 115934583,
+      "email": "sasuke@test.com",
+      "role": "USER",
+      "createdAt": "2024-04-30T01:14:53.907Z"
+    },
+    {
+      "id": "4921",
+      "firstName": "Sakura",
+      "phone": 115934583,
+      "lastName": "Haruno",
+      "email": "Sakura@gmail.com",
+      "role": "USER",
+      "createdAt": "2024-05-05T02:40:25.055Z"
+    }
+  ],
+  "sales": [],
+  "roles": [],
+  "teacher": []
+}
