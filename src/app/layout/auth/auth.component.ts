@@ -65,7 +65,6 @@ export class AuthComponent {
       localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
       localStorage.setItem('accessToken','fdskfdsjkmngfunudsijfdsioufjsdoifdsyhfds');
       this.router.navigate(['dashboard', 'home'])
-
       }
     }
 

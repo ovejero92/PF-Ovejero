@@ -24,6 +24,23 @@
       "email": "Sakura@gmail.com",
       "role": "USER",
       "createdAt": "2024-05-05T02:40:25.055Z"
+    },
+    {
+      "id": "fc84",
+      "firstName": "Tony",
+      "lastName": "Stark",
+      "phone": 115522545,
+      "email": "and_i_ironman@gmail.com",
+      "role": "USER",
+      "createdAt": "2024-05-05T07:47:16.781Z"
+    },
+    {
+      "id": "1510",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "test@gmail.com",
+      "role": "ADMIN",
+      "createdAt": "2024-05-05T18:52:24.107Z"
     }
   ],
   "sales": [],
