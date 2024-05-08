@@ -10,17 +10,21 @@ import { IProduct } from './models/index';
 })
 export class ProductsComponent implements OnInit{
   displayedColumns = ['id', 'name', 'price', 'actions'];
+  products: IProduct[] = []
 
   //products: IProduct[] = []
   constructor(private productsService: ProductsService , 
     @Inject(API_URL) private apiUrl: string,
     @Inject(RANDOM_NUMBER) private randomNumber: number,
-    @Inject(PRODUCTS) public products: IProduct[]
   ) {
     console.log(this.apiUrl);
     console.log('numeros random', this.randomNumber)
   }
   ngOnInit(): void {
-  this.products = this.productsService.getProducts();
+  this.productsService.getProducts().subscribe({
+    next: (product) => {
+    this.products = product
+    }
+  })
   }
 }

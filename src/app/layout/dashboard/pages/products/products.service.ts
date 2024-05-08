@@ -1,28 +1,19 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from './models';
+import { ICreateProductPayload, IProduct } from './models';
+import { HttpClient } from '@angular/common/http';
+import { Observable, delay } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ProductsService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
   
-  getProducts(): IProduct[] {
-    return [
-      {
-        id: 1,
-        name: 'Python',
-        price: 130000
-      },
-      {
-        id:2,
-        name: 'Java Script',
-        price:130000
-      },
-      {
-        id:3,
-        name: 'React js',
-        price:90000
-      },
-    ];
+  getProducts(): Observable<IProduct[]> {
+    return this.httpClient.get<IProduct[]>(environment.baseAPIURL+'/products').pipe(delay(1500))
+  }
+
+  createProducts(payload: ICreateProductPayload): Observable<IProduct>{
+    return this.httpClient.post<IProduct>(environment.baseAPIURL+'/products',payload).pipe(delay(1500))
   }
 }

@@ -67,7 +67,7 @@ export class SalesComponent implements OnInit {
   }
 
   loadProducts() {
-    this.products = this.productsService.getProducts();
+   // this.products = this.productsService.getProducts();
   }
 
   loadSales() {

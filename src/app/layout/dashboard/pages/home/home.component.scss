@@ -36,8 +36,9 @@
         height: 300px;
         background-color: rgba(0, 0, 0, 0.705);
         border-radius: 5px;
-        box-shadow: 2px 5px 10px 5px ;
+        box-shadow: 5px 5px 16px 0px ;
         margin-bottom: 30px;
+        border: 2.1px solid rgba(193, 4, 240, 0.486);
         .contEsp{
             height: 40px;
             padding-top: 10px;
@@ -58,8 +59,9 @@
         .descuento{
             padding-top: 50px;
             padding-left: 9px;
-            color: rgb(192, 4, 240);
+            color: rgb(179, 7, 223);
             font-weight: 400;
+            text-shadow: 0px 0px 3px  white;
         }
         .precioSD{
             color: grey;
@@ -82,6 +84,7 @@
                 background-color: rgba(128, 128, 128, 0.719);
                 padding: 10px;
                 border-radius: 10px;
+                color: rgb(7, 80, 7);
             }
         }
     }
