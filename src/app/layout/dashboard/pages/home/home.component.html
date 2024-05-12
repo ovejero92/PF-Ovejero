@@ -7,14 +7,16 @@
     </div>
     <div class="bodHom">
      <!-- Cards -->
-     <div class="contCard">
-        <div class="contEsp"><span>Negocios</span></div>
-        <div class="titular">Finanzas personales</div>
-        <div class="descuento">20% off</div>
-        <div class="precioSD"><s>$45630</s></div>
-        <div class="precioCD">$36014 ARS</div>
-        <div class="BotVer"><button>Ver Detalles</button></div>
-     </div>
+     @for (prod of products; track $index){
+         <div class="contCard">
+            <div class="contEsp"><span>{{prod.categori}}</span></div>
+            <div class="titular">{{prod.name}}</div>
+            <div class="descuento">20% off</div>
+            <div class="precioSD"><s>${{prod.price}}</s></div>
+            <div class="precioCD">$ {{prod.price * 0.8}} ARS</div>
+            <div class="BotVer"><button>Ver Detalles</button></div>
+         </div>
+     }
 
     </div>
 </div>

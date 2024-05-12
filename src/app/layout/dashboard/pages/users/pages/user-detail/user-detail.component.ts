@@ -25,7 +25,7 @@ constructor(private activatedRoute: ActivatedRoute, private userService: UserSer
  // LA 2 
   // this.activatedRoute.snapshot.params
   this.loading = true
-  this.user$ = this.userService.getUserById(parseInt(this.activatedRoute.snapshot.params['id'])).pipe(
+  this.user$ = this.userService.getUserById(this.activatedRoute.snapshot.params['id']).pipe(
     finalize(()=> {
       this.loading = false
     })

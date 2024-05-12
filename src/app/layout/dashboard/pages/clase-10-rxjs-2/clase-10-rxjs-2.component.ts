@@ -49,7 +49,7 @@ export class Clase10Rxjs2Component implements OnInit, OnDestroy {
   getUsers(): Observable<IUser[]> {
     const USERS_DB: IUser[] = [
       {
-        id: 1,
+        id: "1",
         firstName: 'Naruto',
         phone: 11534124,
         email: 'naru@test.com',
@@ -57,7 +57,7 @@ export class Clase10Rxjs2Component implements OnInit, OnDestroy {
         createdAt: new Date(),
       },
       {
-        id: 2,
+        id: "2",
         firstName: 'Sasuke',
         phone: 11876345,
         email: 'sasuke@test.com',
@@ -114,7 +114,7 @@ export class Clase10Rxjs2Component implements OnInit, OnDestroy {
     this.cambioElUsuario$.subscribe({
       next: (value) => {
         this.usuarioAutenticado$.next({
-          id: 1,
+          id: "1",
           createdAt: new Date(),
           email: 'email@mail.com',
           firstName: 'goku',

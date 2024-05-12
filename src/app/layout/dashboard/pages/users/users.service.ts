@@ -18,7 +18,7 @@ export class UserService {
 return throwError(()=> new Error)
 */
 }
-getUserById(id:number):Observable<IUser | undefined>{
+getUserById(id:string):Observable<IUser | undefined>{
   return this.httpClient.get<IUser>(`${environment.baseAPIURL}/users/${id}`).pipe(delay(1500))
   //return of(USER_DB.find((el)=> el.id === id)).pipe(delay(1500))
 }
@@ -26,5 +26,10 @@ getUserById(id:number):Observable<IUser | undefined>{
 createUser(payload: ICreateUserPayload): Observable<IUser>{
   return this.httpClient.post<IUser>(`${environment.baseAPIURL}/users`, payload)
 }
+
+deleteUser(id:string): Observable<IUser | undefined> {
+  return this.httpClient.delete<IUser>(`${environment.baseAPIURL}/users/${id}`).pipe(delay(1500))
+}
+
 
 }

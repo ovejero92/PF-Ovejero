@@ -33,31 +33,50 @@
       "email": "and_i_ironman@gmail.com",
       "role": "USER",
       "createdAt": "2024-05-05T07:47:16.781Z"
-    },
-    {
-      "id": "1510",
-      "firstName": "test",
-      "lastName": "test",
-      "email": "test@gmail.com",
-      "role": "ADMIN",
-      "createdAt": "2024-05-05T18:52:24.107Z"
     }
   ],
-  "products":[
+  "products": [
     {
-      "id": 1,
+      "id": "644b",
+      "name": "JavaScript",
+      "price": "147900",
+      "categori": "Programación Y Desarrollo",
+      "createdAt": "2024-05-08T06:04:44.046Z"
+    },
+    {
+      "id": "3d69",
       "name": "Python",
-      "price": 130000
+      "price": "181200",
+      "categori": "Programación y Desarrollo",
+      "createdAt": "2024-05-08T06:05:50.862Z"
     },
     {
-      "id":2,
-      "name": "Java Script",
-      "price":130000
+      "id": "90e2",
+      "name": "Finanzas Personales",
+      "price": "47912",
+      "categori": "Negocios",
+      "createdAt": "2024-05-08T06:06:55.942Z"
     },
     {
-      "id":3,
-      "name": "React js",
-      "price":90000
+      "id": "7ed0",
+      "name": "Contabilidad",
+      "price": "47912",
+      "categori": "Negocios",
+      "createdAt": "2024-05-08T06:07:23.121Z"
+    },
+    {
+      "id": "c408",
+      "name": "Excel Avanzado",
+      "price": "55320",
+      "categori": "Data",
+      "createdAt": "2024-05-08T06:08:26.715Z"
+    },
+    {
+      "id": "5edc",
+      "name": "Google Ads",
+      "price": "55320",
+      "categori": "Marketing",
+      "createdAt": "2024-05-08T06:08:59.184Z"
     }
   ],
   "sales": [],

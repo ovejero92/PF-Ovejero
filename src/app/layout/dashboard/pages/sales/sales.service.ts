@@ -7,7 +7,7 @@ let SALES_DB: ISale[] = [
   {
     id: 1,
     buyer: {
-      id: 1,
+      id: "1",
       createdAt: new Date(),
       email: 'some@mail.com',
       firstName: 'TEST',
@@ -15,7 +15,7 @@ let SALES_DB: ISale[] = [
       role: 'USER',
     },
     product: {
-      id: 1,
+      id: "1",
       name: 'IPAD',
       price: 1000,
     },

@@ -40,7 +40,7 @@ export class UsersComponent implements OnInit{
         });
       },
       complete:() => {
-        console.log('BD CONECTADO!');
+        console.log('... BD usuarios conectada ✔️');
         this.loading = false
       },
     });
@@ -58,6 +58,7 @@ export class UsersComponent implements OnInit{
             if (editingUser) {
               // ACTUALIZAR EL USUARIO EN EL ARRAY
               this.users = this.users.map((u) =>
+
                 u.id === editingUser.id ? { ...u, ...result } : u
               );
             } else {
@@ -76,9 +77,14 @@ export class UsersComponent implements OnInit{
       });
   }
 
-  onDeleteUser(id: number): void {
+  onDeleteUser(id: string): void {
     if (confirm('Esta seguro?')) {
-      this.users = this.users.filter((u) => u.id != id);
+      this.userService.deleteUser(id).subscribe({
+        next: (userEliminado) => {
+          this.users = [...this.users]
+        }
+      })
+      this.users = this.users.filter((u) => u.id != `${id}`);
     }
   }
 }

@@ -1,12 +1,14 @@
 export interface IProduct {
-    id: number;
+    id: string;
     categori?:string;
     name: string;
     price: number;
+    createdAt?: Date;
 }
 
 export interface ICreateProductPayload{
-    categori?:string;
-    name:string;
-    price:number;
+    categori?:string | null;
+    name:string | null;
+    price:number | null;
+    createdAt?: Date | null;
 }

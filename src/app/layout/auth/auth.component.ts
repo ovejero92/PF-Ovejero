@@ -45,8 +45,8 @@ export class AuthComponent {
     authUser$: Observable<any | null>;
     constructor(private authService: AuthService, private router:Router, private formBuilder: FormBuilder){
       this.loginForm = this.formBuilder.group({
-        email:[''],
-        contra: [''],
+        email:['',[Validators.required]],
+        contra: ['',[Validators.required]],
       })      
       this.authUser$ = this.authService.authUser$
           }
@@ -63,12 +63,12 @@ export class AuthComponent {
       });
       let datosUsuarioCreado = this.userRegister.value
       localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
-      localStorage.setItem('accessToken','fdskfdsjkmngfunudsijfdsioufjsdoifdsyhfds');
+      localStorage.setItem('accessToken','92fb232f-2a5c-4d44-a581-5abc156087b6');
       this.router.navigate(['dashboard', 'home'])
       }
     }
 
-    register(){
+    register(): void{
         this.onSubmit()
     }
     login(){
