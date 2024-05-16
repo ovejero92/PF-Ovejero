@@ -6,6 +6,9 @@ import { ProductsService } from '../products/products.service';
 import { IProduct } from '../products/models';
 import { UserService } from '../users/users.service';
 import { IUser } from '../users/models';
+import { Store } from '@ngrx/store';
+import { selectSaleList } from './store/sale.selectors';
+import { SaleActions } from './store/sale.actions';
 
 @Component({
   selector: 'app-sales',
@@ -32,7 +35,8 @@ export class SalesComponent implements OnInit {
   constructor(
     private salesService: SalesService,
     private productsService: ProductsService,
-    private usersService: UserService
+    private usersService: UserService,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -71,15 +75,26 @@ export class SalesComponent implements OnInit {
   }
 
   loadSales() {
-    this.isLoading = true;
-    this.salesService.getSales().subscribe({
-      next: (sales) => {
-        this.sales = sales;
-      },
+    //this.isLoading = true;
+
+    this.store.dispatch(SaleActions.loadSales());
+    
+    this.store.select(selectSaleList).subscribe({
+      next:(sales)=>{this.sales = sales;},
       error: () => {},
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
+      complete: () => {this.isLoading = false;},
+     });
+
+
+
+    // this.salesService.getSales().subscribe({
+    //   next: (sales) => {
+    //     this.sales = sales;
+    //   },
+    //   error: () => {},
+    //   complete: () => {
+    //     this.isLoading = false;
+    //   },
+    // });
   }
 }

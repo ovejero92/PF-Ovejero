@@ -19,10 +19,10 @@ describe('authService',() => {
     it('Debe estableser un usuario autenticado al llamar login',() => {
     const spyOnSetItem = spyOn(localStorage,'setItem')
     const spyOnNavigate =spyOn(router, 'navigate')
-    authService.login({
-        email: 'ovejero.gustavo92@gmail.com',
-        contra: 'Cyg190921'
-    });
+    // authService.login({
+    //     email: 'ovejero.gustavo92@gmail.com',
+    //     contra: 'Cyg190921'
+    // });
     authService.authUser$.subscribe({
         next: (authUser) => {
         // to be truty comprueba que no sea null undefained o false
@@ -35,10 +35,10 @@ describe('authService',() => {
 
     it('Debe mostrar una alerta si los datos no coinciden con los datos del usuario ',() => {
         const spyOnAlert = spyOn(window, 'alert')
-        authService.login({
-            email:'fake@gmail.com',
-            contra: 'Fake123'
-        });
+        // authService.login({
+        //     email:'fake@gmail.com',
+        //     contra: 'Fake123'
+        // });
         expect(spyOnAlert).toHaveBeenCalled();
     })
 

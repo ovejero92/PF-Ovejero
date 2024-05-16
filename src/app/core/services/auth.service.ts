@@ -27,38 +27,38 @@ export class AuthService {
             role: 'ADMIN',
         });
     }
-    login(data: LoginData): void {
-    if(data.email !== this.DatosUsuario.email || data.contra !== this.DatosUsuario.contra){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Something went wrong!",
-            footer: '<a href="#">Why do I have this issue?</a>'
-          });
-    } else {
-      this._authUser$.next({
-        id:1,
-        createdAt: new Date(),
-        email:`${this.DatosUsuario.email}`,
-        firstName: `${this.DatosUsuario.firstName}`,
-        phone: this.DatosUsuario.phone,
-        contra: `${this.DatosUsuario.contra}`,
-        role: 'ADMIN',
-    })
-        localStorage.setItem('accessToken','fdskfdsjkmngfunudsijfdsioufjsdoifdsyhfds');
-        this.router.navigate(['dashboard','home']);
-    };
-}
+//     login(data: LoginData): void {
+//     if(data.email !== this.DatosUsuario.email || data.contra !== this.DatosUsuario.contra){
+//         Swal.fire({
+//             icon: "error",
+//             title: "Oops...",
+//             text: "Something went wrong!",
+//             footer: '<a href="#">Why do I have this issue?</a>'
+//           });
+//     } else {
+//       this._authUser$.next({
+//         id:1,
+//         createdAt: new Date(),
+//         email:`${this.DatosUsuario.email}`,
+//         firstName: `${this.DatosUsuario.firstName}`,
+//         phone: this.DatosUsuario.phone,
+//         contra: `${this.DatosUsuario.contra}`,
+//         role: 'ADMIN',
+//     })
+//         localStorage.setItem('accessToken','fdskfdsjkmngfunudsijfdsioufjsdoifdsyhfds');
+//         this.router.navigate(['dashboard','home']);
+//     };
+// }
 verifyToken(): boolean{
     const token = localStorage.getItem('accessToken');
     if(token){
     this._authUser$.next({
         id:1,
         createdAt: new Date(),
-        email:`${this.DatosUsuario.email}`,
-        firstName: `${this.DatosUsuario.firstName}`,
-        phone: this.DatosUsuario.phone,
-        contra: `${this.DatosUsuario.contra}`,
+        email: this.DatosUsuario ? this.DatosUsuario.email : '',
+        firstName: this.DatosUsuario ? this.DatosUsuario.firstName : '',
+        phone: this.DatosUsuario ? this.DatosUsuario.phone : '',
+        contra: this.DatosUsuario ? this.DatosUsuario.contra : '',
         role: 'ADMIN',
     })
     return true;

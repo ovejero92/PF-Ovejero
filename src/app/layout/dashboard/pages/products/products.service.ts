@@ -10,7 +10,7 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) {}
   
   getProducts(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(environment.baseAPIURL+'/products').pipe(delay(1500))
+    return this.httpClient.get<IProduct[]>(`${environment.baseAPIURL}/products`).pipe(delay(1500))
   }
 
   createProducts(payload: ICreateProductPayload): Observable<IProduct>{

@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { authActions } from '../../store/auth/auth.actions';
+import { authUser } from '../../store/auth/auth.selectors';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit, OnDestroy{
   
   //datosLocales = localStorage.getItem('Usuario')
   loginForm: FormGroup;
   
-
+  authUserSubscription?:Subscription;
           
   userRegister = this.formBuilder.group({
             // name: this.formBuilder.control(''),
@@ -43,12 +46,23 @@ export class AuthComponent {
           }
           
     authUser$: Observable<any | null>;
-    constructor(private authService: AuthService, private router:Router, private formBuilder: FormBuilder){
+    constructor(private authService: AuthService, private router:Router, private formBuilder: FormBuilder, private store: Store){
       this.loginForm = this.formBuilder.group({
         email:['',[Validators.required]],
         contra: ['',[Validators.required]],
       })      
       this.authUser$ = this.authService.authUser$
+          }
+          ngOnInit(): void {
+            this.authUserSubscription = this.store.select(authUser).subscribe({
+              next: (user) => {
+                if(user) this.router.navigate(['dashboard', 'home']);
+              }
+            })
+          }
+          
+          ngOnDestroy(): void {
+           this.authUserSubscription?.unsubscribe()
           }
 
     onSubmit(): void {
@@ -75,6 +89,8 @@ export class AuthComponent {
       if(this.loginForm.invalid) {
         this.loginForm.markAllAsTouched();
       } else {
-      this.authService.login(this.loginForm.getRawValue())}
+      //this.authService.login(this.loginForm.getRawValue())}
+      this.store.dispatch(authActions.login({payload: this.loginForm.getRawValue()}))
    }
+}
 }

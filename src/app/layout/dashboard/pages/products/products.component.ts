@@ -14,6 +14,8 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
 export class ProductsComponent implements OnInit{
   displayedColumns = ['id', 'name', 'price', 'categori' ,'actions'];
   products: IProduct[] = []
+  loading = false;
+  currentPage = 1;
 
   //products: IProduct[] = []
   constructor(private productsService: ProductsService , 
@@ -25,6 +27,7 @@ export class ProductsComponent implements OnInit{
     console.log('numeros random', this.randomNumber)
   }
   ngOnInit(): void {
+    this.loading = true
   this.productsService.getProducts().subscribe({
     next: (product) => {
     this.products = product
@@ -39,6 +42,7 @@ export class ProductsComponent implements OnInit{
     },
     complete:()=>{
       console.log('... BD productos conectada ✔️')
+      this.loading = false
     }
     //final this.productsService
     });
@@ -73,6 +77,35 @@ export class ProductsComponent implements OnInit{
         }
       })
       this.products = this.products.filter((u) => u.id != `${id}`);
+    }
+  }
+
+  nextPage() {
+    let aumento = this.currentPage++;
+    // this.productsService.getProducts(aumento).subscribe({
+    //   next: (prod) => {
+    //     this.products = prod
+    //   },
+    //   error:(err)=> {
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: "¡Error al cargar los datos del a base de datos!",
+    //       footer: '<a routingLink="auth">Volver a ingresar</a>'
+    //     });
+    //   },
+    //   complete:()=>{
+    //     console.log('... BD productos conectada ✔️')
+    //     this.loading = false
+    //   }
+    // });
+    
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      let decremento = this.currentPage--;
+      this.productsService.getProducts();
     }
   }
 
