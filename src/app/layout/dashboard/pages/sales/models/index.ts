@@ -3,20 +3,22 @@ import { IProduct } from '../../products/models';
 import { IUser } from '../../users/models';
 
 export interface ISale {
-  id: number;
-  product: IProduct;
-  buyer: IUser;
+  id: string;
+  product?: IProduct;
+  user?: IUser;
+  userID:string;
+  productId:string;
   quantity: number;
 }
 
 export interface ISaleForm {
   quantity: FormControl<number | null>;
-  buyer: FormControl<IUser | null>;
+  user: FormControl<IUser | null>;
   product: FormControl<IProduct | null>;
 }
 
 export interface ICreateSaleData {
   product?: IProduct | null;
-  buyer?: IUser | null;
+  user?: IUser | null;
   quantity?: number | null;
 }

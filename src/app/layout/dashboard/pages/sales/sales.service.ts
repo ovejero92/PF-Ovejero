@@ -2,61 +2,44 @@ import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { ICreateSaleData, ISale } from './models';
 import { HttpClient } from '@angular/common/http';
-
-let SALES_DB: ISale[] = [
-  {
-    id: 1,
-    buyer: {
-      id: "1",
-      createdAt: new Date(),
-      email: 'some@mail.com',
-      firstName: 'TEST',
-      phone: 11000000,
-      role: 'USER',
-    },
-    product: {
-      id: "1",
-      name: 'IPAD',
-      price: 1000,
-    },
-    quantity: 2,
-  },
-];
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class SalesService {
-  // CRUD
-  // Create, Read, Update y Delete
 
-  constructor() {
+  constructor(private http: HttpClient) {
     // private httpClient: HttpClient
     // this.httpClient.get('http://myapi.com/users')
   }
 
   getSales(): Observable<ISale[]> {
-    return of(SALES_DB).pipe(delay(1500));
+    // return of(SALES_DB).pipe(delay(1500));
+    return this.http.get<ISale[]>(`${environment.baseAPIURL}/sales?_embed=user&_embed=product`).pipe(delay(1500));
+  }
+
+  getSalesByUserId(uid: string): Observable<ISale[]> { 
+    return this.http.get<ISale[]>(`${environment.baseAPIURL}/sales?userId=${uid}&_embed=product`)
   }
 
   createSales(data: ICreateSaleData) {
-    if (data.buyer && data.product && data.quantity) {
-      const newSale: ISale = {
-        id: new Date().getTime(),
-        buyer: data.buyer,
-        product: data.product,
-        quantity: data.quantity,
-      };
-      SALES_DB.push(newSale);
+    if (data.user && data.product && data.quantity) {
+      // const newSale: ISale = {
+      //   id: new Date().getTime(),
+      //   user: data.user,
+      //   product: data.product,
+      //   quantity: data.quantity,
+      // };
+      //SALES_DB.push(newSale);
     }
-    return of(SALES_DB);
+    return of([]);
   }
 
   deleteSale(id: number) {
-    return of(SALES_DB.filter((sale) => sale.id != id));
+    return of([]);
   }
 
   updateSale(id: number, data: ISale) {
-    return of(
-      SALES_DB.map((sale) => (sale.id === id ? { ...sale, ...data } : sale))
-    );
+    return of();
+      //SALES_DB.map((sale) => (sale.id === id ? { ...sale, ...data } : sale))
   }
 }

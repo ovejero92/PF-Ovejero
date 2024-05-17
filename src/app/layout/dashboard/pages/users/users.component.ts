@@ -35,7 +35,7 @@ export class UsersComponent implements OnInit{
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "¡Error al cargar los datos del a base de datos!",
+          text: `¡Error al cargar los datos del a base de datos! ${err}`,
           footer: '<a routingLink="auth">Volver a ingresar</a>'
         });
       },

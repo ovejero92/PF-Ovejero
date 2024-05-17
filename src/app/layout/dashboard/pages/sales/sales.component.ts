@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SalesService } from './sales.service';
 import { ISale, ISaleForm } from './models';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -7,15 +7,16 @@ import { IProduct } from '../products/models';
 import { UserService } from '../users/users.service';
 import { IUser } from '../users/models';
 import { Store } from '@ngrx/store';
-import { selectSaleList } from './store/sale.selectors';
+import { selectLoadingSales, selectSaleList, selectSalesError } from './store/sale.selectors';
 import { SaleActions } from './store/sale.actions';
+import { Observable, Subscription, delay } from 'rxjs';
 
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.scss',
 })
-export class SalesComponent implements OnInit {
+export class SalesComponent implements OnInit , OnDestroy{
   sales: ISale[] = [];
   products: IProduct[] = [];
   users: IUser[] = [];
@@ -24,20 +25,27 @@ export class SalesComponent implements OnInit {
 
   existsUnsavedChanges = false;
 
-  isLoading = false;
-
   saleForm = new FormGroup<ISaleForm>({
     quantity: new FormControl(1),
-    buyer: new FormControl(null),
+    user: new FormControl(null),
     product: new FormControl(null),
   });
 
+  salesSubscription?: Subscription;
+  loadingSales$: Observable<boolean>;
+  error$:Observable<unknown>;
   constructor(
     private salesService: SalesService,
     private productsService: ProductsService,
     private usersService: UserService,
     private store: Store
-  ) {}
+  ) {
+    this.loadingSales$ = this.store.select(selectLoadingSales).pipe(delay(1500))
+    this.error$ = this.store.select(selectSalesError)
+  }
+  ngOnDestroy(): void {
+   this.salesSubscription?.unsubscribe()
+  }
 
   ngOnInit(): void {
     this.loadSales();
@@ -79,22 +87,10 @@ export class SalesComponent implements OnInit {
 
     this.store.dispatch(SaleActions.loadSales());
     
-    this.store.select(selectSaleList).subscribe({
+    this.salesSubscription = this.store.select(selectSaleList).subscribe({
       next:(sales)=>{this.sales = sales;},
       error: () => {},
-      complete: () => {this.isLoading = false;},
+      complete: () => {},
      });
-
-
-
-    // this.salesService.getSales().subscribe({
-    //   next: (sales) => {
-    //     this.sales = sales;
-    //   },
-    //   error: () => {},
-    //   complete: () => {
-    //     this.isLoading = false;
-    //   },
-    // });
   }
 }

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../users.service';
 import { Observable, finalize } from 'rxjs';
 import { IUser } from '../../models';
+import { ISale } from '../../../sales/models';
+import { SalesService } from '../../../sales/sales.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -14,7 +16,9 @@ user$: Observable<IUser | undefined>
 
 loading = false
 
-constructor(private activatedRoute: ActivatedRoute, private userService: UserService) {
+compras$: Observable<ISale[]>;
+
+constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private salesService: SalesService) {
 
   // HAY DOS MANERAS LA 1
   /*
@@ -24,11 +28,12 @@ constructor(private activatedRoute: ActivatedRoute, private userService: UserSer
   */
  // LA 2 
   // this.activatedRoute.snapshot.params
-  this.loading = true
+  this.loading = true;
+  this.compras$ = this.salesService.getSalesByUserId(
+  this.activatedRoute.snapshot.params['id']
+  );
   this.user$ = this.userService.getUserById(this.activatedRoute.snapshot.params['id']).pipe(
-    finalize(()=> {
-      this.loading = false
-    })
+    finalize(()=> {this.loading = false})
   )
 }
 }

@@ -1,6 +1,11 @@
-@if (isLoading) {
+@if (loadingSales$ | async) {
     <mat-spinner style="margin: 150px auto;"></mat-spinner>
     } @else {
+
+    @if(error$ | async) {
+      <h2>Ocurrio un error al cargar las ventas </h2>
+    }
+    @else {
     <div class="nav-salon">
       <h4>Creacion de Salones virtuales</h4>
       <button (click)="modalVisible = true">crear</button>
@@ -33,21 +38,21 @@
     <div style="display: flex; flex-wrap: wrap;">
     @for (salon of sales; track $index) {
       <div class="card-salon">
-        <div class="id-salon">{{salon.buyer.id}}</div>
-        <div class="banner"><span>{{salon.product.name}}</span></div>
+        <div class="id-salon">{{salon.product?.id}}</div>
+        <div class="banner"><span>{{salon.product?.name}}</span></div>
         <div class="body-salon">
-        <p>Profesor: <span>{{salon.buyer.firstName}}</span></p>
+        <p>Profesor: <span>PROFE -TODO-</span></p>
         <p>Inicio: <span>25/6/2024</span></p>
         <p>capacidad: <span>{{salon.quantity}}</span></p>
         <div class="del"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
     }
-  </div>
-    <!--
+  </div>}
+   
        
     <pre>{{ saleForm.value | json }}</pre>
 
-    <pre>{{ sales | json }}</pre> -->
+    <pre>{{ sales | json }}</pre>  <!---->
 
     }

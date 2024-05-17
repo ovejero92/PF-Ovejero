@@ -17,3 +17,4 @@ export interface ICreateUserPayload {
     role: string | null;
     createdAt: Date | null;
 }
+

@@ -79,7 +79,14 @@
       "createdAt": "2024-05-08T06:08:59.184Z"
     }
   ],
-  "sales": [],
+  "sales": [
+    {
+      "id": "abc123",
+      "productId": "3d69",
+      "userId": "4921",
+      "quantity": 2
+    }
+  ],
   "roles": [],
   "teacher": []
 }
