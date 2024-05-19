@@ -8,6 +8,10 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { ProductsService } from './products.service';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './store/product.effects';
+import { StoreModule } from '@ngrx/store';
+import { productFeature } from './store/product.reducer';
 
 export const API_URL = new InjectionToken('API_URL')
 export const RANDOM_NUMBER = new InjectionToken('RANDOM_NAMBER')
@@ -23,7 +27,9 @@ export const PRODUCTS = new InjectionToken('PRODUCTS')
     ProductsRoutingModule,
     MatTableModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StoreModule.forFeature(productFeature),
+    EffectsModule.forFeature([ProductEffects])
   ],
   exports: [
     ProductsComponent

@@ -77,6 +77,13 @@
       "price": "55320",
       "categori": "Marketing",
       "createdAt": "2024-05-08T06:08:59.184Z"
+    },
+    {
+      "id": "df66",
+      "name": "Blender",
+      "price": "130000",
+      "categori": "Modelado 3D",
+      "createdAt": "2024-05-18T08:20:04.432Z"
     }
   ],
   "sales": [
@@ -87,6 +94,25 @@
       "quantity": 2
     }
   ],
-  "roles": [],
-  "teacher": []
+  "teachers": [
+    {
+      "id": "546y",
+      "firstName": "Kakashi",
+      "phone": 1595346329,
+      "email": "kakashi@gmail.com",
+      "role": "TEACHER",
+      "tecnologi": "Python",
+      "createdAt": "2024-05-08T06:04:44.046Z"
+    },
+    {
+      "id": "32f2",
+      "firstName": "Iruka",
+      "lastName": "Umino",
+      "phone": "156959495",
+      "email": "Iruka_Umino@gmail.com",
+      "tecnologi": "Blender",
+      "createdAt": "2024-05-19T08:25:37.694Z"
+    }
+  ],
+  "roles": []
 }

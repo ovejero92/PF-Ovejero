@@ -1,0 +1,69 @@
+@if(isLoading$ | async){
+    <mat-spinner style="margin: 150px auto;"></mat-spinner>
+  } @else { 
+     <ng-container>
+      <div class="d-flex justify-content-end mb-3">
+      <button (click)="createTeacherMock()"  mat-button color="warn">
+          Crear prfesor mock
+        </button>
+        <button (click)="openDialog()" mat-button color="primary">
+          Crear Profesor
+        </button>
+      </div>
+      
+      <table mat-table [dataSource]="(teachers$ | async) || []" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Correo</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="tecnologi">
+          <th mat-header-cell *matHeaderCellDef>Tecnologia</th>
+          <td mat-cell *matCellDef="let element">{{ element.tecnologi }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef>tiempo</th>
+            <td mat-cell *matCellDef="let element">{{ element.createdAt | date}}</td>
+          </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+      
+            <!-- *ngIf="userRoleSession === 'ADMIN'" -->
+            <button (click)="onDeleteTeachers(element.id)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    
+      <!-- <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+    <button (click)="nextPage()">Siguiente</button> -->
+    </ng-container>
+  }

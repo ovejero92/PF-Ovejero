@@ -4,12 +4,12 @@ import { ISale, ISaleForm } from './models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProductsService } from '../products/products.service';
 import { IProduct } from '../products/models';
-import { UserService } from '../users/users.service';
-import { IUser } from '../users/models';
 import { Store } from '@ngrx/store';
 import { selectLoadingSales, selectSaleList, selectSalesError } from './store/sale.selectors';
 import { SaleActions } from './store/sale.actions';
 import { Observable, Subscription, delay } from 'rxjs';
+import { TeachersService } from '../teachers/teachers.service';
+import { ITeacher } from '../teachers/models';
 
 @Component({
   selector: 'app-sales',
@@ -19,7 +19,7 @@ import { Observable, Subscription, delay } from 'rxjs';
 export class SalesComponent implements OnInit , OnDestroy{
   sales: ISale[] = [];
   products: IProduct[] = [];
-  users: IUser[] = [];
+  teachers: ITeacher[] = [];
 
   modalVisible = false;
 
@@ -37,7 +37,7 @@ export class SalesComponent implements OnInit , OnDestroy{
   constructor(
     private salesService: SalesService,
     private productsService: ProductsService,
-    private usersService: UserService,
+    private teachersService: TeachersService,
     private store: Store
   ) {
     this.loadingSales$ = this.store.select(selectLoadingSales).pipe(delay(1500))
@@ -50,7 +50,7 @@ export class SalesComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
     this.loadSales();
     this.loadProducts();
-    this.loadUsers();
+    this.loadTeachers();
     this.subscribeToSaleFormChanges()
   }
   subscribeToSaleFormChanges(): void {
@@ -70,16 +70,20 @@ export class SalesComponent implements OnInit , OnDestroy{
     });
   }
 
-  loadUsers() {
-    this.usersService.getUsers().subscribe({
-      next: (users) => {
-        this.users = users;
+  loadTeachers() {
+    this.teachersService.getTeachers().subscribe({
+      next: (teacher) => {
+        this.teachers = teacher;
       },
+      error:(e)=>{e},
+      complete:()=>{},
     });
   }
 
   loadProducts() {
-   // this.products = this.productsService.getProducts();
+   this.productsService.getProducts().subscribe({
+    next:(v)=> (this.products = v),
+   });
   }
 
   loadSales() {

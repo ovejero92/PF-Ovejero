@@ -17,7 +17,7 @@ export class ProductsService {
     return this.httpClient.post<IProduct>(environment.baseAPIURL+'/products',payload).pipe(delay(1500))
   }
 
-  deleteProducts(id: string): Observable<IProduct[] | undefined> {
-    return this.httpClient.delete<IProduct[]>(environment.baseAPIURL+"/products/"+id)
+  deleteProducts(id: string): Observable<IProduct> {
+    return this.httpClient.delete<IProduct>(environment.baseAPIURL+"/products/"+id)
   }
 }

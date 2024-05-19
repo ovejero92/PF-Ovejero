@@ -12,7 +12,11 @@ import Swal from 'sweetalert2';
 export class ProductDialogComponent {
  productForm: FormGroup;
 
- constructor(private fromBuilder: FormBuilder, private matDialogRef: MatDialogRef<ProductDialogComponent>,@Inject(MAT_DIALOG_DATA) private editingProduct?: IProduct){
+ constructor(
+  private fromBuilder: FormBuilder, 
+  private matDialogRef: MatDialogRef<ProductDialogComponent>,
+  @Inject(MAT_DIALOG_DATA) private editingProduct?: IProduct)
+  {
   this.productForm = this.fromBuilder.group({
     name: ['',[Validators.required]],
     price:[,[Validators.required]],
