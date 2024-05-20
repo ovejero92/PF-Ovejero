@@ -1,0 +1,9 @@
+<div class="chat-container">
+    <div class="message" *ngFor="let message of messages">
+      <span [innerHTML]="message"></span>
+    </div>
+    <div class="message typing" *ngIf="typingMessage">
+      <span [innerHTML]="typingMessage"></span>
+    </div>
+    <input type="text" [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
+  </div>

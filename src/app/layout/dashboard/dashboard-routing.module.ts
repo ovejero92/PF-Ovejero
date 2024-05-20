@@ -26,6 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sales/sales.module').then((m) => m.SalesModule),
   },
   {
+    path: 'chatbot',
+    loadChildren: () => import('./pages/chatbot/chatbot.module').then((m) => m.ChatbotModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home'

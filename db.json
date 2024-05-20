@@ -88,10 +88,18 @@
   ],
   "sales": [
     {
-      "id": "abc123",
-      "productId": "3d69",
-      "userId": "4921",
-      "quantity": 2
+      "id": "7a8c",
+      "quantity": 37,
+      "teacher": "Kakashi",
+      "product": "JavaScript",
+      "user": null
+    },
+    {
+      "id": "55df",
+      "quantity": 50,
+      "teacher": "Kakashi",
+      "product": "Finanzas Personales",
+      "user": null
     }
   ],
   "teachers": [

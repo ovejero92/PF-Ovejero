@@ -10,6 +10,7 @@ import { SaleActions } from './store/sale.actions';
 import { Observable, Subscription, delay } from 'rxjs';
 import { TeachersService } from '../teachers/teachers.service';
 import { ITeacher } from '../teachers/models';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sales',
@@ -27,8 +28,9 @@ export class SalesComponent implements OnInit , OnDestroy{
 
   saleForm = new FormGroup<ISaleForm>({
     quantity: new FormControl(1),
-    user: new FormControl(null),
+    teacher: new FormControl(null),
     product: new FormControl(null),
+    user: new FormControl(null)
   });
 
   salesSubscription?: Subscription;
@@ -62,12 +64,10 @@ export class SalesComponent implements OnInit , OnDestroy{
     })
   }
 
+
   createSale() {
-    this.salesService.createSales(this.saleForm.value).subscribe({
-      next: (sales) => {
-        console.log(sales);
-      },
-    });
+   this.store.dispatch(SaleActions.createSale({payload: this.saleForm.value}))
+   this.modalVisible = false
   }
 
   loadTeachers() {
@@ -96,5 +96,26 @@ export class SalesComponent implements OnInit , OnDestroy{
       error: () => {},
       complete: () => {},
      });
+  }
+
+  onDeleteSales(id:string): void {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.store.dispatch(SaleActions.deleteSaleById({id}))
+        Swal.fire({
+          title: "¡Eliminado!",
+          text: `El producto ${result.value.name} fue eliminado.`,
+          icon: "success"
+        });
+      }
+    });
   }
 }

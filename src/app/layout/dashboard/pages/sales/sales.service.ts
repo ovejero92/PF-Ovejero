@@ -14,28 +14,19 @@ export class SalesService {
 
   getSales(): Observable<ISale[]> {
     // return of(SALES_DB).pipe(delay(1500));
-    return this.http.get<ISale[]>(`${environment.baseAPIURL}/sales?_embed=user&_embed=product`).pipe(delay(1500));
+    return this.http.get<ISale[]>(`${environment.baseAPIURL}/sales?_embed=user`).pipe(delay(1500));
   }
 
   getSalesByUserId(uid: string): Observable<ISale[]> { 
     return this.http.get<ISale[]>(`${environment.baseAPIURL}/sales?userId=${uid}&_embed=product`)
   }
 
-  createSales(data: ICreateSaleData) {
-    if (data.user && data.product && data.quantity) {
-      // const newSale: ISale = {
-      //   id: new Date().getTime(),
-      //   user: data.user,
-      //   product: data.product,
-      //   quantity: data.quantity,
-      // };
-      //SALES_DB.push(newSale);
-    }
-    return of([]);
+  createSales(payload: ICreateSaleData): Observable<ISale> {
+  return this.http.post<ISale>(`${environment.baseAPIURL}/sales`,payload)
   }
 
-  deleteSale(id: number) {
-    return of([]);
+  deleteSale(id: string) {
+    return this.http.delete<ISale>(`${environment.baseAPIURL}/sales/${id}`);
   }
 
   updateSale(id: number, data: ISale) {

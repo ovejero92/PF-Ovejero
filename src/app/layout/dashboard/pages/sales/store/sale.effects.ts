@@ -22,6 +22,28 @@ export class SaleEffects {
     );
   });
 
+  createSales$ = createEffect(() => {
+  return this.actions$.pipe(
+    ofType(SaleActions.createSale),
+    concatMap((action) => 
+      this.salesService.createSales(action.payload).pipe(
+        map(data => SaleActions.createSaleSuccess({data})),
+        catchError(error => of(SaleActions.createSaleFailure({error}))))
+    )
+  );
+  });
+
+  deleteSaleById$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SaleActions.deleteSaleById),
+      concatMap((action) => 
+      this.salesService.deleteSale(action.id).pipe(
+        map((data) => SaleActions.deleteSaleSuccess({data})),
+        catchError((error) => of(SaleActions.deleteSaleFailure({error}))))
+      )
+    );
+  });
+
 
   constructor(private actions$: Actions, private salesService: SalesService) {}
 }

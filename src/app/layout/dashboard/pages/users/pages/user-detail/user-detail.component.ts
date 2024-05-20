@@ -29,8 +29,8 @@ constructor(private activatedRoute: ActivatedRoute, private userService: UserSer
  // LA 2 
   // this.activatedRoute.snapshot.params
   this.loading = true;
-  this.compras$ = this.salesService.getSalesByUserId(
-  this.activatedRoute.snapshot.params['id']
+  this.compras$ = this.salesService.getSalesByUserId(this.activatedRoute.snapshot.params['id']).pipe(
+    finalize(() => {this.loading = false})
   );
   this.user$ = this.userService.getUserById(this.activatedRoute.snapshot.params['id']).pipe(
     finalize(()=> {this.loading = false})

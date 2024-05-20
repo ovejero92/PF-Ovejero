@@ -19,25 +19,26 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
   on(SaleActions.loadSales, (state) => {
-    return {
-      ...state,
-      loadingSales:true,
-    }
+    return {...state,loadingSales:true}
   }),
   on(SaleActions.loadSalesSuccess, (state, action) => {
-    return {
-      ...state,
-      sales: action.data,
-      loadingSales: false
-    };
+    return {...state,sales: action.data,loadingSales: false}
   }),
   on(SaleActions.loadSalesFailure, (state, action) => {
-    return {
-      ...state,
-      error: action.error,
-      loadingSales:false,
-    }
+    return {...state,error: action.error,loadingSales:false}
   }),
+
+  on(SaleActions.createSale,state => {
+    return {...state, loadingSales:true}
+  }),
+  on(SaleActions.createSaleSuccess,(state,action) => {
+    return {...state, loadingSales:false,sales:[...state.sales, action.data]}
+  }),
+  on(SaleActions.createSaleFailure, (state,action) => {
+    return {...state,loadingSales:false,error: action.error}
+  }),
+  on(SaleActions.deleteSaleById,(state) => ({...state, loadingSales:true})),
+  on(SaleActions.deleteSaleSuccess,(state,action) => ({...state,loadingSales:false,sales:state.sales.filter((el) => el.id !== action.data.id)}))
 );
 
 export const saleFeature = createFeature({

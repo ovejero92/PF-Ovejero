@@ -1,6 +1,8 @@
 <mat-spinner *ngIf="loading" style="margin: 150px auto;"></mat-spinner>
 
-<div [ngClass]="!loading ? 'd-block' : 'd-none'">
+<div [ngClass]="!loading ? 'd-block' : 'd-none'" >
+  <div style="display: flex; justify-content: center;">
+
  <div class="credencial">
       <div class="tira"></div>
       <div class="gancho1"></div>
@@ -23,7 +25,29 @@
       </div>
 </div>
 
-<pre>{{compras$ | async | json}}</pre>
+<div class="credencial">
+  <div class="tira"></div>
+  <div class="gancho1"></div>
+  <div class="gancho2"></div>
+  <div class="semiCirculo"></div>
+  <div class="contenido">
+    <!--TODO
+    <div><img></div>
+    -->
+    <div class="fondo">
+    <h4>Curso Adquirido</h4>
+    <hr>
+    @if (compras$ | async ; as compra) {
+      <p style="text-align: center; font-size: 20px;">id aula = {{compra[0].id}}</p>
+      <p>Tecnologia: <span>{{compra[0].product?.name}}</span></p>
+      <p>Categoria: <span>{{compra[0].product?.categori}}</span></p>
+      <p>Inicio: <span>{{compra[0].inicio}}</span></p>
+    }</div>
+  </div>
+</div>
+
+</div>
+<!-- <pre>{{compras$ | async | json}}</pre> -->
 </div> 
 
 <!-- <button (click)="cambiarParametro()">cambiar param</button> -->
