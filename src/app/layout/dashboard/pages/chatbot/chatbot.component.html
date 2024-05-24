@@ -1,9 +1,13 @@
 <div class="chat-container">
-    <div class="message" *ngFor="let message of messages">
-      <span [innerHTML]="message"></span>
+  <div *ngFor="let message of messages">
+    <div [ngClass]="{'user-message': message.type === 'user', 'bot-message': message.type === 'bot'}">
+      {{ message.text }}
     </div>
-    <div class="message typing" *ngIf="typingMessage">
-      <span [innerHTML]="typingMessage"></span>
-    </div>
-    <input type="text" [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
   </div>
+  <div *ngIf="typingMessage" class="typing">{{ typingMessage }}</div>
+  <div *ngFor="let option of options" (click)="selectOption(option)" class="option">
+    {{ option }}
+  </div>
+  <input [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" placeholder="Escribe tu mensaje..."/>
+  <button (click)="sendMessage()">Enviar</button>
+</div>
