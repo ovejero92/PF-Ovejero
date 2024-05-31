@@ -11,6 +11,8 @@ import { Observable, Subscription, delay } from 'rxjs';
 import { TeachersService } from '../teachers/teachers.service';
 import { ITeacher } from '../teachers/models';
 import Swal from 'sweetalert2';
+import { IUser } from '../users/models';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sales',
@@ -21,6 +23,7 @@ export class SalesComponent implements OnInit , OnDestroy{
   sales: ISale[] = [];
   products: IProduct[] = [];
   teachers: ITeacher[] = [];
+  authUser$: Observable<IUser | null>;
 
   modalVisible = false;
 
@@ -40,10 +43,12 @@ export class SalesComponent implements OnInit , OnDestroy{
     private salesService: SalesService,
     private productsService: ProductsService,
     private teachersService: TeachersService,
-    private store: Store
+    private store: Store,
+    private authService: AuthService
   ) {
     this.loadingSales$ = this.store.select(selectLoadingSales).pipe(delay(1500))
-    this.error$ = this.store.select(selectSalesError)
+    this.error$ = this.store.select(selectSalesError);
+    this.authUser$ = authService.authUser$
   }
   ngOnDestroy(): void {
    this.salesSubscription?.unsubscribe()

@@ -3,10 +3,10 @@
   } @else { 
      <ng-container>
       <div class="d-flex justify-content-end mb-3">
-      <button (click)="createTeacherMock()"  mat-button color="warn">
+      <button *ngIf="(authUser$ | async)?.role === 'ADMIN'" (click)="createTeacherMock()"  mat-button color="warn">
           Crear prfesor mock
         </button>
-        <button (click)="openDialog()" mat-button color="primary">
+        <button *ngIf="(authUser$ | async)?.role === 'ADMIN'" (click)="openDialog()" mat-button color="primary">
           Crear Profesor
         </button>
       </div>
@@ -59,8 +59,16 @@
           </td>
         </ng-container>
       
+        @if((authUser$ | async)?.role === 'ADMIN'){
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        }@else {
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsUser"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsUser"></tr>
+        }
+       
+
+
       </table>
     
       <!-- <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>

@@ -8,6 +8,9 @@ import { ITeacher } from './models';
 import { TeacherActions } from './store/teacher.actions';
 import { TeachersDialogComponent } from './components/teacher-dialog/teacher-dialog.component';
 import Swal from 'sweetalert2';
+import { IUser } from '../users/models';
+import { UserService } from '../users/users.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-teachers',
@@ -16,16 +19,20 @@ import Swal from 'sweetalert2';
 })
 export class TeachersComponent implements OnInit{
  displayedColumns: string[] = ['id', 'firstName','email','tecnologi','createdAt','actions']
+ displayedColumnsUser: string[]=  ['id', 'firstName','email','tecnologi','createdAt']
+ 
  isLoading$: Observable<boolean>
  teachers: ITeacher[] = []
  teachers$:Observable<ITeacher[]>
  error$:Observable<unknown>
+ authUser$:Observable<IUser | null>;
 
 
- constructor(private store:Store, private teachersService: TeachersService, private matDialog: MatDialog){
-  this.isLoading$ = this.store.select(selectIsLoading)
-  this.teachers$ = this.store.select(selectTeachers)
-  this.error$ = this.store.select(selectTeachersError)
+ constructor(private store:Store, private teachersService: TeachersService, private matDialog: MatDialog,private authService:AuthService){
+  this.isLoading$ = this.store.select(selectIsLoading);
+  this.teachers$ = this.store.select(selectTeachers);
+  this.error$ = this.store.select(selectTeachersError);
+  this.authUser$ = this.authService.authUser$;
  }
   ngOnInit(): void {
    this.store.dispatch(

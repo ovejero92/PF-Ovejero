@@ -84,6 +84,13 @@
       "price": "130000",
       "categori": "Modelado 3D",
       "createdAt": "2024-05-18T08:20:04.432Z"
+    },
+    {
+      "id": "2682",
+      "name": "Random product",
+      "price": 200000,
+      "categori": "Random Categori",
+      "createdAt": "2024-05-26T00:10:51.075Z"
     }
   ],
   "sales": [

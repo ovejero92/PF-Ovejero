@@ -15,10 +15,10 @@ export class ChatbotComponent{
     if (this.userMessage.trim() !== '') {
       this.messages.push({ text: this.userMessage, type: 'user' });
       this.userMessage = '';
-      this.simulateTyping('Hola Mi nombre es india mi trabajo es enviar tu error de cualquiera de los servicios.\n¿Cual de ellos te esta fallando? ⬇clickealo⬇')
+      this.simulateTyping('Hola, mi nombre es India.\n¿En qué puedo ayudarte? ⬇clickealo⬇')
       setTimeout(()=>{
         this.provideOptions(['Profesores', 'Alumnos', 'Tecnologias', 'Aulas']);
-      },13200);
+      },10200);
     }
   }
 
@@ -45,7 +45,7 @@ export class ChatbotComponent{
   selectOption(option: string) {
     this.messages.push({ text: option, type: 'user' });
     this.options = [];
-    this.simulateTyping(`Has seleccionado ${option}.En estos momentos mande la orden para que analizen donde se encuenta el error en breve te mandare cuando lo solucionemos \ngracias por avisarnos...`);
+    this.simulateTyping(`Has seleccionado ${option}. Solicitamos que verifiquen dónde se encuentra el error, en breve te indicaré cuando esté solucionado. \nGracias por avisarnos!`);
     // Aquí puedes agregar lógica para cambiar las preguntas basadas en la opción seleccionada
   }
 }

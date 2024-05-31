@@ -24,7 +24,7 @@ export class AuthService {
             firstName: `${this.DatosUsuario.firstName}`,
             phone: this.DatosUsuario.phone,
             contra: `${this.DatosUsuario.contra}`,
-            role: 'ADMIN',
+            role: `${this.DatosUsuario.role}`,
         });
     }
 //     login(data: LoginData): void {
@@ -59,7 +59,7 @@ verifyToken(): boolean{
         firstName: this.DatosUsuario ? this.DatosUsuario.firstName : '',
         phone: this.DatosUsuario ? this.DatosUsuario.phone : '',
         contra: this.DatosUsuario ? this.DatosUsuario.contra : '',
-        role: 'ADMIN',
+        role: this.DatosUsuario ? this.DatosUsuario.role: '' ,
     })
     return true;
     } else {

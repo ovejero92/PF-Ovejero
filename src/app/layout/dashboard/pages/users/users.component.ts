@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import Swal from 'sweetalert2';
 import { UserService } from './users.service';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +13,13 @@ import { UserService } from './users.service';
   styleUrl: './users.component.scss',
 })
 export class UsersComponent implements OnInit{
+  authUser$: Observable<IUser | null>;
+
+  usu = localStorage.getItem('Usuario');
+  datosU = JSON.parse(`${this.usu}`);
+
+  
+  
   displayedColumns: string[] = [
     'id',
     'firstName',
@@ -20,11 +29,23 @@ export class UsersComponent implements OnInit{
     'createdAt',
     'actions',
   ];
+  displayedColumnsUser: string[] = [
+    'id',
+    'firstName',
+    'lastName',
+    'email',
+    'role',
+    'createdAt',
+
+  ];
 
   loading = false;
   users: IUser[] = [];
 
-  constructor(private matDialog: MatDialog, private userService: UserService) {}
+  constructor(private matDialog: MatDialog, private userService: UserService, private authService: AuthService) {
+  this.authUser$ = this.authService.authUser$
+  console.log(this.datosU)
+  }
   ngOnInit(): void {
     this.loading = true;
     this.userService.getUsers().subscribe({

@@ -30,6 +30,7 @@ export class AuthComponent implements OnInit, OnDestroy{
               Validators.required,
             ]),
             contra: ['',  [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$')]],
+            role:['ADMIN' || 'USER']
           });
           
           get emailControl() {
@@ -76,11 +77,19 @@ export class AuthComponent implements OnInit, OnDestroy{
         timer: 1500
       });
       let datosUsuarioCreado = this.userRegister.value
-      localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
-      localStorage.setItem('accessToken','92fb232f-2a5c-4d44-a581-5abc156087b6');
-      this.router.navigate(['dashboard', 'home'])
+      if((datosUsuarioCreado.email == 'josuebaez61+profesor@gmail.com') || (datosUsuarioCreado.email == 'kirito92@gmail.com')){
+        datosUsuarioCreado.role = 'ADMIN'
+        localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
+        localStorage.setItem('accessToken','92fb232f-2a5c-4d44-a581-5abc156087b6');
+        this.router.navigate(['dashboard', 'home'])
+      } else{
+        datosUsuarioCreado.role = 'USER'
+        localStorage.setItem('Usuario', JSON.stringify(datosUsuarioCreado))
+        localStorage.setItem('accessToken','92fb232f-2a5c-4d44-a581-5abc156087b6');
+        this.router.navigate(['dashboard', 'home'])
       }
-    }
+      
+      }}
 
     register(): void{
         this.onSubmit()

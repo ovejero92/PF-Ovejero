@@ -18,8 +18,8 @@
         <ul class="menu">
             <li> <a routerLink="home"><i class="fa-solid fa-house"></i> Inicio</a></li>
             <li><a routerLink="teachers"><i class="fa-solid fa-chalkboard-user"></i>Profesores</a></li>
-            <li><a *ngIf="(authUser$ | async)?.role === 'ADMIN'" routerLink="users"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
-            <li><a routerLink="products"><i class="fa-solid fa-dumpster-fire"></i>Tecnologias</a></li>
+            <li><a  routerLink="users"><i class="fa-solid fa-graduation-cap"></i>Alumnos</a></li>
+            <li><a  *ngIf="(authUser$ | async)?.role === 'ADMIN'" routerLink="products"><i class="fa-solid fa-dumpster-fire"></i>Tecnologias</a></li>
             <li><a routerLink="sales"><i class="fa-solid fa-people-roof"></i>Aulas</a></li>
             <li><a routerLink="chatbot"><i class="fa-regular fa-comment"></i>Mensajes</a></li>
         </ul>

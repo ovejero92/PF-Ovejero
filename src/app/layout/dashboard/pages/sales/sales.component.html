@@ -7,8 +7,12 @@
     }
     @else {
     <div class="nav-salon">
-      <h4>Creacion de Salones virtuales</h4>
-      <button (click)="modalVisible = true">crear</button>
+      @if((authUser$ | async)?.role === 'ADMIN'){
+        <h4>Creacion de Salones virtuales</h4>
+      } @else {
+        <h4>Vista de Salones virtuales</h4>
+      }
+      <button *ngIf="(authUser$ | async)?.role === 'ADMIN'" (click)="modalVisible = true">crear</button>
     </div>
     <app-my-modal (close)="modalVisible = false" [visible]="modalVisible">
       <form [formGroup]="saleForm">
@@ -43,7 +47,7 @@
         <p>Profesor: <span>{{salon.teacher}}</span></p>
         <p>Inicio: <span>25/6/2024</span></p>
         <p>capacidad: <span>0 / {{salon.quantity}}</span></p>
-        <div class="del"><a (click)="onDeleteSales(salon.id)" style="color: white;"><i class="fa-solid fa-trash-can"></i></a></div>
+        <div *ngIf="(authUser$ | async)?.role === 'ADMIN'" class="del"><a  (click)="onDeleteSales(salon.id)" style="color: white;"><i class="fa-solid fa-trash-can"></i></a></div>
         </div>
       </div>
     }

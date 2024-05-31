@@ -10,7 +10,6 @@ const routes: Routes = [
   },
   {
     path:'users',
-    canActivate: [adminGuard],
     loadChildren: () => import('./pages/users/users.module').then((m) => m.UsersModule),
   },
   {
@@ -19,6 +18,7 @@ const routes: Routes = [
   },
   {
     path:'products',
+    canActivate:[adminGuard],
     loadChildren:()=> import('./pages/products/products.module').then((m)=> m.ProductsModule),
   },
   {
