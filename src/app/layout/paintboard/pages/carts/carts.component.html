@@ -1,14 +1,33 @@
-<!-- styles.component.html -->
-<form (ngSubmit)="saveStyles()">
-    <label for="backgroundColor">Background Color:</label>
-    <input id="backgroundColor" [(ngModel)]="styles.background" name="background">
-    
-    <label for="textColor">Text Color:</label>
-    <input id="textColor" [(ngModel)]="styles.textColor" name="textColor">
-    
-    <button type="submit">Save Styles</button>
-  </form>
-  
-  <div class="card" [ngStyle]="appliedStyles">
-    This is a card with dynamic styles
-  </div>
+<div class="card" id="customCard">
+  <div ><img id="cardImage" src="" width="150" alt="Imagen de la tarjeta" style="display: none;margin: 0 auto;"></div>
+  <p>Nombre Produto</p>
+  <p>precio: $0000</p>
+  <p>stock: 00</p>
+  <button id="addToCartButton">Agregar al carrito</button>
+</div>
+<label for="bgColor">Color de fondo:</label>
+<input type="color" id="bgColor" name="bgColor"><br><br>
+
+<label for="fontFamily">Fuente:</label>
+<select id="fontFamily" name="fontFamily">
+  <option value="Arial">Arial</option>
+  <option value="Times New Roman">Times New Roman</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Georgia">Georgia</option>
+</select><br><br>
+
+<label for="boxShadow">Sombra de la tarjeta:</label>
+<input type="range" id="boxShadow" name="boxShadow" min="0" max="50"><br><br>
+
+<label for="buttonColor">Color del botón:</label>
+<input type="color" id="buttonColor" name="buttonColor"><br><br>
+
+<label for="buttonSize">Tamaño del botón:</label>
+<input type="range" id="buttonSize" name="buttonSize" min="10" max="50"><br><br>
+
+<label for="imageUpload">Subir imagen:</label>
+<input type="file" id="imageUpload" name="imageUpload" accept="image/*"><br><br>
+
+<button id="applyStylesButton" style="background-color: rgb(17, 42, 156);">Aplicar estilos</button>
+
+<script src="./change.js"></script>

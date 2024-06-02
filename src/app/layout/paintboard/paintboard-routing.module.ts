@@ -11,6 +11,18 @@ const routes: Routes = [
     loadChildren:() => import('./pages/carts/carts.module').then((m)=>m.CartsModule),
   },
   {
+    path:'backgorunds',
+    loadChildren:() => import('./pages/backgorunds/backgorunds.module').then((m)=>m.BackgorundsModule),
+  },
+  {
+    path:'modifier',
+    loadChildren:()=> import('./pages/modifier/modifier.module').then((m)=>m.ModifierModule),
+  },
+  {
+    path:'chatbot',
+    loadChildren:() => import('./pages/chatbot/chatbot.module').then((m)=>m.ChatbotModule),
+  },
+  {
     path:'',
     pathMatch:'full',
     redirectTo:'home'
