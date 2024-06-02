@@ -26,13 +26,12 @@
       "createdAt": "2024-05-05T02:40:25.055Z"
     },
     {
-      "id": "fc84",
-      "firstName": "Tony",
-      "lastName": "Stark",
-      "phone": 115522545,
-      "email": "and_i_ironman@gmail.com",
+      "id": "1ce9",
+      "firstName": "Gustavo",
+      "lastName": "Ovejero",
+      "email": "fgsdfg@dfdsf.com",
       "role": "USER",
-      "createdAt": "2024-05-05T07:47:16.781Z"
+      "createdAt": "2024-06-02T00:40:24.523Z"
     }
   ],
   "products": [
@@ -127,6 +126,13 @@
       "email": "Iruka_Umino@gmail.com",
       "tecnologi": "Blender",
       "createdAt": "2024-05-19T08:25:37.694Z"
+    }
+  ],
+  "carts": [
+    {
+      "id": "9a2e",
+      "background": "red",
+      "textColor": "green"
     }
   ],
   "roles": []

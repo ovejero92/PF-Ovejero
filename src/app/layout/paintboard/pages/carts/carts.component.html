@@ -1,0 +1,14 @@
+<!-- styles.component.html -->
+<form (ngSubmit)="saveStyles()">
+    <label for="backgroundColor">Background Color:</label>
+    <input id="backgroundColor" [(ngModel)]="styles.background" name="background">
+    
+    <label for="textColor">Text Color:</label>
+    <input id="textColor" [(ngModel)]="styles.textColor" name="textColor">
+    
+    <button type="submit">Save Styles</button>
+  </form>
+  
+  <div class="card" [ngStyle]="appliedStyles">
+    This is a card with dynamic styles
+  </div>

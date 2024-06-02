@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 //import { AuthComponent } from './layout/auth/auth.component';
 import { authGuard } from './core/guards/auth.guard';
+import { PaintboardComponent } from './layout/paintboard/paintboard.component';
+import { StatisticsComponent } from './layout/statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -14,6 +16,16 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./layout/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+   path: 'paintboard',
+   component:PaintboardComponent,
+   loadChildren: () => import('./layout/paintboard/paintboard.module').then((m) => m.PaintboardModule),
+  },
+  {
+   path:'statistics',
+   component:StatisticsComponent,
+   loadChildren: () => import('./layout/statistics/statistics.module').then((m)=>m.StatisticsModule),
   },
   {
     path:'**',

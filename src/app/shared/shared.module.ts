@@ -13,6 +13,8 @@ import { ResaltadoDirective } from './directive/resaltado.directive';
 import { RepetirDirective } from './directive/repetir.directive';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     FormFieldValidationErrorsPipe,
@@ -34,6 +36,8 @@ import { MatCardModule } from '@angular/material/card';
     FormFieldValidationErrorsPipe,
     ResaltadoDirective,
     RepetirDirective,
+    MatSidenavModule,
+    MatToolbarModule
   ],
 })
 export class SharedModule {}
