@@ -10,6 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, rootReducer } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { authReducer, authFeatureName } from './store/auth/auth.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,12 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     DashboardModule,
     HttpClientModule,
-    StoreModule.forRoot(rootReducer, {
-      metaReducers:metaReducers,
-    }),
+    StoreModule.forRoot(
+      { ...rootReducer, [authFeatureName]: authReducer },
+      { metaReducers }
+    ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([AuthEffects]),  // ← AuthEffects registrado acá
   ],
   providers: [
     provideAnimationsAsync()

@@ -4,7 +4,8 @@
       "id": "1",
       "firstName": "Naruto",
       "phone": 11649324,
-      "email": "naru@test.com",
+      "email": "admin@test.com",
+      "contra": "Admin1234",
       "role": "ADMIN",
       "createdAt": "2024-04-30T01:14:53.907Z"
     },
@@ -13,25 +14,19 @@
       "firstName": "Sasuke",
       "phone": 115934583,
       "email": "sasuke@test.com",
+      "contra": "Sasuke123",
       "role": "USER",
       "createdAt": "2024-04-30T01:14:53.907Z"
     },
     {
       "id": "4921",
       "firstName": "Sakura",
-      "phone": 115934583,
       "lastName": "Haruno",
-      "email": "Sakura@gmail.com",
+      "phone": 115934583,
+      "email": "sakura@test.com",
+      "contra": "Sakura123",
       "role": "USER",
       "createdAt": "2024-05-05T02:40:25.055Z"
-    },
-    {
-      "id": "1ce9",
-      "firstName": "Gustavo",
-      "lastName": "Ovejero",
-      "email": "fgsdfg@dfdsf.com",
-      "role": "USER",
-      "createdAt": "2024-06-02T00:40:24.523Z"
     }
   ],
   "products": [
@@ -39,57 +34,50 @@
       "id": "644b",
       "name": "JavaScript",
       "price": "147900",
-      "categori": "Programación Y Desarrollo",
+      "category": "Programación Y Desarrollo",
       "createdAt": "2024-05-08T06:04:44.046Z"
     },
     {
       "id": "3d69",
       "name": "Python",
       "price": "181200",
-      "categori": "Programación y Desarrollo",
+      "category": "Programación y Desarrollo",
       "createdAt": "2024-05-08T06:05:50.862Z"
     },
     {
       "id": "90e2",
       "name": "Finanzas Personales",
       "price": "47912",
-      "categori": "Negocios",
+      "category": "Negocios",
       "createdAt": "2024-05-08T06:06:55.942Z"
     },
     {
       "id": "7ed0",
       "name": "Contabilidad",
       "price": "47912",
-      "categori": "Negocios",
+      "category": "Negocios",
       "createdAt": "2024-05-08T06:07:23.121Z"
     },
     {
       "id": "c408",
       "name": "Excel Avanzado",
       "price": "55320",
-      "categori": "Data",
-      "createdAt": "2024-05-08T06:08:26.715Z"
+      "category": "Data",
+      "createdAt": "2024-05-08T06:08:26.071Z"
     },
     {
       "id": "5edc",
       "name": "Google Ads",
       "price": "55320",
-      "categori": "Marketing",
-      "createdAt": "2024-05-08T06:08:59.184Z"
+      "category": "Marketing",
+      "createdAt": "2024-05-08T06:08:59.046Z"
     },
     {
       "id": "df66",
       "name": "Blender",
       "price": "130000",
-      "categori": "Modelado 3D",
-      "createdAt": "2024-05-18T08:20:04.432Z"
-    },
-    {
-      "id": "2682",
-      "name": "Random product",
-      "price": 200000,
-      "categori": "Random Categori",
-      "createdAt": "2024-05-26T00:10:51.075Z"
+      "category": "Modelado 3D",
+      "createdAt": "2024-05-18T08:20:04.055Z"
     }
   ],
   "sales": [
@@ -98,14 +86,14 @@
       "quantity": 37,
       "teacher": "Kakashi",
       "product": "JavaScript",
-      "user": null
+      "userId": "2"
     },
     {
       "id": "55df",
       "quantity": 50,
       "teacher": "Kakashi",
       "product": "Finanzas Personales",
-      "user": null
+      "userId": "4921"
     }
   ],
   "teachers": [
@@ -115,7 +103,7 @@
       "phone": 1595346329,
       "email": "kakashi@gmail.com",
       "role": "TEACHER",
-      "tecnologi": "Python",
+      "technology": "Python",
       "createdAt": "2024-05-08T06:04:44.046Z"
     },
     {
@@ -123,17 +111,11 @@
       "firstName": "Iruka",
       "lastName": "Umino",
       "phone": "156959495",
-      "email": "Iruka_Umino@gmail.com",
-      "tecnologi": "Blender",
-      "createdAt": "2024-05-19T08:25:37.694Z"
+      "email": "iruka@gmail.com",
+      "technology": "Blender",
+      "createdAt": "2024-05-19T08:25:37.055Z"
     }
   ],
-  "carts": [
-    {
-      "id": "9a2e",
-      "background": "red",
-      "textColor": "green"
-    }
-  ],
+  "carts": [],
   "roles": []
 }
