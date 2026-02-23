@@ -1,0 +1,121 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Naruto",
+      "phone": 11649324,
+      "email": "admin@test.com",
+      "contra": "Admin1234",
+      "role": "ADMIN",
+      "createdAt": "2024-04-30T01:14:53.907Z"
+    },
+    {
+      "id": "2",
+      "firstName": "Sasuke",
+      "phone": 115934583,
+      "email": "sasuke@test.com",
+      "contra": "Sasuke123",
+      "role": "USER",
+      "createdAt": "2024-04-30T01:14:53.907Z"
+    },
+    {
+      "id": "4921",
+      "firstName": "Sakura",
+      "lastName": "Haruno",
+      "phone": 115934583,
+      "email": "sakura@test.com",
+      "contra": "Sakura123",
+      "role": "USER",
+      "createdAt": "2024-05-05T02:40:25.055Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "644b",
+      "name": "JavaScript",
+      "price": "147900",
+      "category": "Programación Y Desarrollo",
+      "createdAt": "2024-05-08T06:04:44.046Z"
+    },
+    {
+      "id": "3d69",
+      "name": "Python",
+      "price": "181200",
+      "category": "Programación y Desarrollo",
+      "createdAt": "2024-05-08T06:05:50.862Z"
+    },
+    {
+      "id": "90e2",
+      "name": "Finanzas Personales",
+      "price": "47912",
+      "category": "Negocios",
+      "createdAt": "2024-05-08T06:06:55.942Z"
+    },
+    {
+      "id": "7ed0",
+      "name": "Contabilidad",
+      "price": "47912",
+      "category": "Negocios",
+      "createdAt": "2024-05-08T06:07:23.121Z"
+    },
+    {
+      "id": "c408",
+      "name": "Excel Avanzado",
+      "price": "55320",
+      "category": "Data",
+      "createdAt": "2024-05-08T06:08:26.071Z"
+    },
+    {
+      "id": "5edc",
+      "name": "Google Ads",
+      "price": "55320",
+      "category": "Marketing",
+      "createdAt": "2024-05-08T06:08:59.046Z"
+    },
+    {
+      "id": "df66",
+      "name": "Blender",
+      "price": "130000",
+      "category": "Modelado 3D",
+      "createdAt": "2024-05-18T08:20:04.055Z"
+    }
+  ],
+  "sales": [
+    {
+      "id": "7a8c",
+      "quantity": 37,
+      "teacher": "Kakashi",
+      "product": "JavaScript",
+      "userId": "2"
+    },
+    {
+      "id": "55df",
+      "quantity": 50,
+      "teacher": "Kakashi",
+      "product": "Finanzas Personales",
+      "userId": "4921"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "546y",
+      "firstName": "Kakashi",
+      "phone": 1595346329,
+      "email": "kakashi@gmail.com",
+      "role": "TEACHER",
+      "technology": "Python",
+      "createdAt": "2024-05-08T06:04:44.046Z"
+    },
+    {
+      "id": "32f2",
+      "firstName": "Iruka",
+      "lastName": "Umino",
+      "phone": "156959495",
+      "email": "iruka@gmail.com",
+      "technology": "Blender",
+      "createdAt": "2024-05-19T08:25:37.055Z"
+    }
+  ],
+  "carts": [],
+  "roles": []
+}
