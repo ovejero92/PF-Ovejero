@@ -1,12 +1,9 @@
-import { create, router as _router, defaults } from 'json-server';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+const jsonServer = require('json-server');
+const path = require('path');
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const server = create();
-const router = _router(join(__dirname, 'db.json'));
-const middlewares = defaults();
+const server = jsonServer.create();
+const router = jsonServer.router(path.join(__dirname, 'db.json'));
+const middlewares = jsonServer.defaults();
 const port = process.env.PORT || 3000;
 
 server.use((req, res, next) => {
@@ -24,5 +21,5 @@ server.use(middlewares);
 server.use(router);
 
 server.listen(port, () => {
-  console.log(`JSON Server corriendo en puerto ${port}`);
+  console.log('JSON Server corriendo en puerto ' + port);
 });
